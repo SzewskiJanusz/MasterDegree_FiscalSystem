@@ -7,10 +7,11 @@ namespace Fiscal_Management_System.viewmodels.client
     {
         private ClientService clientService;
 
+        private Client _client;
         public Client Client
         {
-            get;
-            set;
+            get { return _client; }
+            set { _client = value; }
         }
 
         public ObservableCollection<Client> Clients

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:val="clr-namespace:Fiscal_Management_System.model.validation_rules"
         mc:Ignorable="d" 
         d:DesignHeight="450" d:DesignWidth="800" Height="500" Width="400"
         Title="Dodawanie kontrahenta">
@@ -65,24 +66,32 @@
                 <!-- NIP -->
                 <TextBox x:Name="tbx_nip" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.NIP" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.NIP" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="NIP" MinLength="10" MaxLength="10" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                                <val:OnlyNumbersValidationRule PropertyName="NIP" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 <!-- Name -->
                 <TextBox x:Name="tbx_name" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.Name" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.Name" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="Nazwa" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                                <val:GrandLetterFirstValidationRule PropertyName="Nazwa" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 <!-- Symbol -->
                 <TextBox x:Name="tbx_symbol" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.Symbol" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.Symbol" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="Symbol" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
@@ -91,32 +100,44 @@
                 <!-- City -->
                 <TextBox x:Name="tbx_city" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.City" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.City" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="Miasto" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                                <val:GrandLetterFirstValidationRule PropertyName="Miasto" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 <!-- Street -->
                 <TextBox x:Name="tbx_street" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.Street" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.Street" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="Ulica" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                                <val:GrandLetterFirstValidationRule PropertyName="Ulica" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 <!-- Phone -->
                 <TextBox x:Name="tbx_phone" VerticalAlignment="Center" Grid.Column="1" Grid.Row="6" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.Phone" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.Phone" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="Telefon" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                                <val:NoLettersValidationRule PropertyName="Telefon" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 <!-- Postal Code -->
                 <TextBox x:Name="tbx_postcode" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.PostCode" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.PostalCode" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="Kod pocztowy" MinLength="6" MaxLength="6" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                                <val:NoLettersValidationRule PropertyName="Kod pocztowy" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
@@ -125,8 +146,10 @@
                 <!-- E-mail -->
                 <TextBox x:Name="tbx_email" VerticalAlignment="Center" Grid.Column="1" Grid.Row="9" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Kontrahent.Email" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-
+                        <Binding Path="Client.Email" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <val:TextLengthValidationRule PropertyName="E-mail" MinLength="0" MaxLength="100" ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>

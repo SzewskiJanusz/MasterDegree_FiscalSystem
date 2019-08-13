@@ -53,7 +53,7 @@ namespace Fiscal_Management_System.model.client
         [Column("kontrahent_ulica")]
         public string Street
         {
-            get { return Street; }
+            get { return _street; }
             set { _street = value; OnPropertyChanged("Street"); }
         }
 
