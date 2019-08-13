@@ -1,0 +1,77 @@
+﻿<Window x:Class="Fiscal_Management_System.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <!-- Menu bar -->
+        <Menu DockPanel.Dock="Top">
+            <!-- Uzytkownik -->
+            <MenuItem Header="_Użytkownik">
+                <MenuItem Header="_Wyloguj" />
+                <Separator />
+                <MenuItem Header="_Zakończ" />
+            </MenuItem>
+            <!-- Widok -->
+            <MenuItem Header="_Widok">
+                <MenuItem Header="_Kontrahenci" />
+                <MenuItem Header="_Urządzenia" />
+                <MenuItem Header="_Zaplanowane usługi" />
+                <MenuItem Header="_Wykonane usługi" />
+                <Separator />
+                <MenuItem Header="_Urzędy skarbowe"/>
+                <Separator />
+                <MenuItem Header="_Modele urządzeń"/>
+                <MenuItem Header="_Typy usług"/>
+            </MenuItem>
+            <!-- Dodaj -->
+            <MenuItem Header="_Dodaj">
+                <MenuItem Header="_Kontrahenta" />
+                <MenuItem Header="_Urządzenie" />
+                <MenuItem Header="_Usługę" />
+            </MenuItem>
+            <!-- Pomoc -->
+            <MenuItem Header="_Pomoc">
+                <MenuItem Header="_Plik pomocy" />
+                <MenuItem Header="_Informacje" />
+            </MenuItem>
+        </Menu>
+        <!-- Tool bar -->
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Content="Add" />
+            </ToolBar>
+        </ToolBarTray>
+        <!-- Side and main panel -->
+        <Grid>
+            <!-- Column definitions -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Side panel -->
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Button Content="Kontrahenci" Grid.Row="0"/>
+                <Button Content="Wszystkie urządzenia" Grid.Row="1"/>
+                <Button Content="Usługi" Grid.Row="2"/>
+            </Grid>
+            <!-- Main panel -->
+            <ItemsControl Grid.Column="1" x:Name="MainTab">
+
+            </ItemsControl>
+        </Grid>
+    </DockPanel>
+</Window>
+
