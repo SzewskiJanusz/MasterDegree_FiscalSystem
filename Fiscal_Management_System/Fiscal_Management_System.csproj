@@ -68,6 +68,7 @@
     <Compile Include="model\validation_rules\NoNumbersValidationRule.cs" />
     <Compile Include="model\validation_rules\OnlyNumbersValidationRule.cs" />
     <Compile Include="model\validation_rules\TextLengthValidationRule.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="viewmodels\client\ClientViewModel.cs" />
     <Compile Include="views\client\AddOrEditClient.xaml.cs">
       <DependentUpon>AddOrEditClient.xaml</DependentUpon>

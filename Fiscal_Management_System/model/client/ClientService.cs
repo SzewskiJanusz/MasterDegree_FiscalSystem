@@ -8,13 +8,16 @@ namespace Fiscal_Management_System.model.client
 {
     public class ClientService
     {
+        private static ObservableCollection<Client> oc = new ObservableCollection<Client>();
+
         public ObservableCollection<Client> GetAll()
         {
-            ObservableCollection<Client> data = new ObservableCollection<Client>
-            {
-                new Client() { ID = 1, NIP = "123123123", Name = "Aaa" }
-            };
-            return data;
+            return oc;
+        }
+
+        public void Add(Client c)
+        {
+            oc.Add(c);
         }
     }
 }

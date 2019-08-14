@@ -154,7 +154,7 @@
                     </TextBox.Text>
                 </TextBox>
                 <!-- Add button-->
-                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Dodaj"/>
+                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Dodaj" Command="{Binding ConfirmAdditionOfClientButtonCommand}" CommandParameter="{Binding Client}"/>
             </Grid>
         </GroupBox>
     </Grid>
