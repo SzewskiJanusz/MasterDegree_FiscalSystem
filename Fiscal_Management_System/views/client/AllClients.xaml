@@ -34,11 +34,11 @@
             
             <!-- Search label and textbox-->
             <Label Content="Szukaj" Margin="10,10,10,10" MinHeight="26"/>
-            <TextBox Width="200" Margin="10,10,10,10" MaxHeight="20"/>
+            <TextBox Width="200" Margin="10,10,10,10" MaxHeight="20" Text="{Binding EntitySearcher.SearchText, UpdateSourceTrigger=PropertyChanged}"  />
         </StackPanel>
         
         <!-- DataGrid -->
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Clients}" Grid.Row="2" >
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding EntitySearcher.FilteredCollection, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*"/>

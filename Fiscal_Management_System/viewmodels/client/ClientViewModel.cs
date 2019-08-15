@@ -1,4 +1,5 @@
-﻿using Fiscal_Management_System.model.client;
+﻿using Fiscal_Management_System.model;
+using Fiscal_Management_System.model.client;
 using Fiscal_Management_System.views.client;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -7,6 +8,20 @@ namespace Fiscal_Management_System.viewmodels.client
 {
     public class ClientViewModel
     {
+        private EntitySearcher<Client> _entitySearcher;
+        public EntitySearcher<Client> EntitySearcher
+        {
+            get
+            {
+                return _entitySearcher;
+            }
+
+            set
+            {
+                _entitySearcher = value;
+            }
+        }
+
         private Client _client;
         public Client Client
         {
@@ -58,6 +73,7 @@ namespace Fiscal_Management_System.viewmodels.client
         {
             ClientService cs = new ClientService();
             Clients = cs.GetAll();
+            EntitySearcher = new EntitySearcher<Client>(Clients);
             Client = new Client() { Name = "Client's name" };
         }
 

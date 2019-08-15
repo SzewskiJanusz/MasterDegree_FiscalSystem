@@ -12,6 +12,10 @@ namespace Fiscal_Management_System.model.client
 
         public ObservableCollection<Client> GetAll()
         {
+            oc.Add(new Client() { Name = "111" });
+            oc.Add(new Client() { Name = "111" });
+            oc.Add(new Client() { Name = "112" });
+            oc.Add(new Client() { Name = "211" });
             return oc;
         }
 

@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="model\client\Client.cs" />
     <Compile Include="model\client\ClientService.cs" />
+    <Compile Include="model\EntitySearcher.cs" />
     <Compile Include="model\validation_rules\GrandLetterFirstValidationRule.cs" />
     <Compile Include="model\validation_rules\NoLettersValidationRule.cs" />
     <Compile Include="model\validation_rules\NoNumbersValidationRule.cs" />
