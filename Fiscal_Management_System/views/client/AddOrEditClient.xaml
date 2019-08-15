@@ -154,7 +154,28 @@
                     </TextBox.Text>
                 </TextBox>
                 <!-- Add button-->
-                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Dodaj" Command="{Binding ConfirmAdditionOfClientButtonCommand}" CommandParameter="{Binding Client}"/>
+                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Dodaj" Command="{Binding ConfirmAdditionOfClientButtonCommand}" CommandParameter="{Binding Client}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_nip}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_name}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_symbol}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_city}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_street}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_phone}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_postcode}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbx_email}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
         </GroupBox>
     </Grid>
