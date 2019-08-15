@@ -44,7 +44,7 @@ namespace Fiscal_Management_System.model
 
         }
 
-        private ObservableCollection<T> GetFilteredData(ObservableCollection<T> collection, string searchText)
+        public ObservableCollection<T> GetFilteredData(ObservableCollection<T> collection, string searchText)
         {
             ObservableCollection<T> data = new ObservableCollection<T>();
             foreach (T c in collection)
@@ -62,6 +62,7 @@ namespace Fiscal_Management_System.model
                         if (prop.ToString().Contains(searchText))
                         {
                             data.Add(c);
+                            break;
                         }
                     }
                 }
