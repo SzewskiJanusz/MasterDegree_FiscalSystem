@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Fiscal_Management_System.model.client
 {
     [Table("Kontrahent")]
-    public class Client : INotifyPropertyChanged
+    public class Client : IEntity, INotifyPropertyChanged
     {
         [Column("kontrahent_id")]
-        public int ID { get; set; }
+        public new int ID { get; set; }
 
         private string _name;
         [Column("kontrahent_nazwa")]
@@ -80,6 +80,26 @@ namespace Fiscal_Management_System.model.client
             get { return _email; }
             set { _email = value; OnPropertyChanged("Email"); }
         }
+
+        /// <summary>
+        /// Copy contructor
+        /// </summary>
+        /// <param name="c"></param>
+        public Client(Client c)
+        {
+            this.ID = c.ID;
+            this.NIP = c.NIP;
+            this.Name = c.Name;
+            this.Symbol = c.Symbol;
+            this.State = c.State;
+            this.City = c.City;
+            this.Street = c.Street;
+            this.PostalCode = c.PostalCode;
+            this.Phone = c.Phone;
+            this.Email = c.Email;
+        }
+
+        public Client() { }
 
         #region INotifyPropertyChanged things
         public event PropertyChangedEventHandler PropertyChanged;
