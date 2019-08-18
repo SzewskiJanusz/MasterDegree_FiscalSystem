@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Fiscal_Management_System.model
+namespace Fiscal_Management_System
 {
     public class EntitySearcher<T> : INotifyPropertyChanged
     {
