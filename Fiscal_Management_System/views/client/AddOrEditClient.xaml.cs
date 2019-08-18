@@ -1,4 +1,5 @@
-﻿using Fiscal_Management_System.viewmodels.client;
+﻿using Fiscal_Management_System.model.client;
+using Fiscal_Management_System.viewmodels.client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace Fiscal_Management_System.views.client
         {
             InitializeComponent();
             this.DataContext = new ClientViewModel();
+        }
+
+        public AddOrEditClient(Client c)
+        {
+            InitializeComponent();
+            this.DataContext = new ClientViewModel(c);
         }
     }
 }
