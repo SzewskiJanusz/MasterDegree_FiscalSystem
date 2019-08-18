@@ -21,8 +21,22 @@
             
             <!-- Add and edit client button -->
             <Button Content="Dodaj" Margin="0,10,10,10" MinWidth="80" MinHeight="26" Command="{Binding GoToAddClientButtonCommand}"/>
-            <Button Content="Edytuj" Margin="10,10,20,10" MinWidth="80" MinHeight="26"/>
-            
+            <Button Content="Edytuj" Margin="10,10,20,10" Name="btn_edit" MinWidth="80" MinHeight="26" Command="{Binding GoToEditClientButtonCommand}" CommandParameter="{Binding Client}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=SelectedIndex, ElementName=DataGrid}" Value="-1"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <!-- Separator --> 
             <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
             
@@ -38,7 +52,7 @@
         </StackPanel>
         
         <!-- DataGrid -->
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding EntitySearcher.FilteredCollection, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2">
+        <DataGrid AutoGenerateColumns="False" Name="DataGrid" SelectedItem="{Binding Client, Mode=OneWayToSource}" ItemsSource="{Binding EntitySearcher.FilteredCollection}" Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*"/>
