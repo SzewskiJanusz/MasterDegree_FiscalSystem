@@ -6,7 +6,7 @@
         xmlns:val="clr-namespace:Fiscal_Management_System.model.validation_rules"
         mc:Ignorable="d" 
         d:DesignHeight="450" d:DesignWidth="800" Height="500" Width="400"
-        Title="Dodawanie kontrahenta">
+        Title="{Binding WindowTitle}">
     <!-- Window Resources. Adding validation to every textbox -->
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -29,7 +29,7 @@
             <RowDefinition Height="8*" />
         </Grid.RowDefinitions>
         <!-- Label -->
-        <Label Content="Dodaj kontrahenta" FontSize="26"/>
+        <Label Content="{Binding WindowTitle}" FontSize="26"/>
         <!-- Inputs -->
         <GroupBox Header="Dane kontrahenta" Grid.Row="1">
             <Grid Grid.Row="1">
@@ -154,7 +154,7 @@
                     </TextBox.Text>
                 </TextBox>
                 <!-- Add button-->
-                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Dodaj" Command="{Binding ConfirmAdditionOfClientButtonCommand}" CommandParameter="{Binding Client}">
+                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="{Binding ButtonText}" Command="{Binding ConfirmAdditionOfClientButtonCommand}" CommandParameter="{Binding Client}">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="IsEnabled" Value="False"/>
