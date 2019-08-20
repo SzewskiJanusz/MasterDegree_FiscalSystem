@@ -64,6 +64,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\client\ClientRepository.cs" />
+    <Compile Include="model\device\Device.cs" />
+    <Compile Include="model\Revenue.cs" />
     <Compile Include="model\revenue\Revenue.cs" />
     <Compile Include="model\revenue\RevenueRepository.cs" />
     <Compile Include="repositories\EntityRepository.cs" />
@@ -81,7 +83,7 @@
     <Compile Include="viewmodels\client\ClientAddViewModel.cs" />
     <Compile Include="viewmodels\client\ClientEditViewModel.cs" />
     <Compile Include="viewmodels\client\ClientViewModel.cs" />
-    <Compile Include="viewmodels\client\RevenueManager.cs" />
+    <Compile Include="viewmodels\revenue\RevenueManager.cs" />
     <Compile Include="viewmodels\client\StateManager.cs" />
     <Compile Include="viewmodels\ComboBoxManager.cs" />
     <Compile Include="views\client\AddOrEditClient.xaml.cs">
@@ -138,8 +140,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="viewmodels\revenue\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
