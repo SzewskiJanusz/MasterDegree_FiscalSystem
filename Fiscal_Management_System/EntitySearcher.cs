@@ -16,10 +16,15 @@ namespace Fiscal_Management_System
             FilteredCollection = col;
         }
 
+        private ObservableCollection<T> _collection;
         public ObservableCollection<T> Collection
         {
-            get;
-            set;
+            get { return _collection; }
+            set
+            {
+                _collection = value;
+                FilteredCollection = _collection;
+            }
         }
 
         private ObservableCollection<T> _filteredCollection;

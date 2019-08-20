@@ -52,7 +52,7 @@
         </StackPanel>
         
         <!-- DataGrid -->
-        <DataGrid AutoGenerateColumns="False" Name="DataGrid" SelectedItem="{Binding Client, Mode=OneWayToSource}" ItemsSource="{Binding EntitySearcher.FilteredCollection}" Grid.Row="2">
+        <DataGrid AutoGenerateColumns="False" Name="DataGrid" SelectedItem="{Binding Client}" ItemsSource="{Binding EntitySearcher.FilteredCollection}" Grid.Row="2" CanUserAddRows="false" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*"/>

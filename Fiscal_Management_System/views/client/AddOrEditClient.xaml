@@ -66,7 +66,7 @@
                 <!-- NIP -->
                 <TextBox x:Name="tbx_nip" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.NIP" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.NIP" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="NIP" MinLength="10" MaxLength="10" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                                 <val:OnlyNumbersValidationRule PropertyName="NIP" ValidationStep="RawProposedValue"/>
@@ -77,7 +77,7 @@
                 <!-- Name -->
                 <TextBox x:Name="tbx_name" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.Name" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.Name" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="Nazwa" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                                 <val:GrandLetterFirstValidationRule PropertyName="Nazwa" ValidationStep="RawProposedValue"/>
@@ -88,19 +88,20 @@
                 <!-- Symbol -->
                 <TextBox x:Name="tbx_symbol" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.Symbol" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.Symbol" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="Symbol" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <!-- Province -->
-                <ComboBox Name="cbx_province" Grid.Column="1" Grid.Row="3" Margin="0,5,0,10"/>
+                <!-- State -->
+                <ComboBox Name="cbx_province" Grid.Column="1" Grid.Row="3" Margin="0,5,0,10" SelectedItem="{Binding Entity.State}" ItemsSource="{Binding StateManager.AllData}" IsSynchronizedWithCurrentItem="True"/>
+
                 <!-- City -->
                 <TextBox x:Name="tbx_city" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.City" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.City" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="Miasto" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                                 <val:GrandLetterFirstValidationRule PropertyName="Miasto" ValidationStep="RawProposedValue"/>
@@ -111,7 +112,7 @@
                 <!-- Street -->
                 <TextBox x:Name="tbx_street" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.Street" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.Street" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="Ulica" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                                 <val:GrandLetterFirstValidationRule PropertyName="Ulica" ValidationStep="RawProposedValue"/>
@@ -122,7 +123,7 @@
                 <!-- Phone -->
                 <TextBox x:Name="tbx_phone" VerticalAlignment="Center" Grid.Column="1" Grid.Row="6" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.Phone" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.Phone" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="Telefon" MinLength="2" MaxLength="100" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                                 <val:NoLettersValidationRule PropertyName="Telefon" ValidationStep="RawProposedValue"/>
@@ -133,7 +134,7 @@
                 <!-- Postal Code -->
                 <TextBox x:Name="tbx_postcode" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.PostalCode" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.PostalCode" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="Kod pocztowy" MinLength="6" MaxLength="6" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                                 <val:NoLettersValidationRule PropertyName="Kod pocztowy" ValidationStep="RawProposedValue"/>
@@ -142,11 +143,15 @@
                     </TextBox.Text>
                 </TextBox>
                 <!-- Revenue-->
-                <ComboBox Name="cbx_revenue" Grid.Column="1" Grid.Row="8" Margin="0,5,0,10"/>
+                <ComboBox Name="cbx_revenue" Grid.Column="1" Grid.Row="8" Margin="0,5,0,10" 
+                          SelectedItem="{Binding Entity.Revenue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                          ItemsSource="{Binding RevenueManager.AllData}" 
+                          DisplayMemberPath="Name" 
+                          IsSynchronizedWithCurrentItem="True"/>
                 <!-- E-mail -->
                 <TextBox x:Name="tbx_email" VerticalAlignment="Center" Grid.Column="1" Grid.Row="9" Margin="0,0,0,10" >
                     <TextBox.Text>
-                        <Binding Path="Client.Email" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Entity.Email" Mode="TwoWay" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <val:TextLengthValidationRule PropertyName="E-mail" MinLength="0" MaxLength="100" ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
@@ -154,7 +159,7 @@
                     </TextBox.Text>
                 </TextBox>
                 <!-- Add button-->
-                <Button Name="btnOK" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="{Binding ButtonText}" Command="{Binding ConfirmAdditionOfClientButtonCommand}" CommandParameter="{Binding Client}">
+                <Button Name="btnOK" Click="closeWindow" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="{Binding ButtonText}" Command="{Binding ConfirmButtonCommand}" CommandParameter="{Binding Entity}">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="IsEnabled" Value="False"/>

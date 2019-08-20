@@ -1,13 +1,15 @@
-﻿using System.ComponentModel;
+﻿using Fiscal_Management_System.model.revenue;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fiscal_Management_System.model.client
 {
     [Table("Kontrahent")]
-    public class Client : IEntity, INotifyPropertyChanged
+    public class Client : INotifyPropertyChanged
     {
         [Column("kontrahent_id")]
-        public new int ID { get; set; }
+        public int ID { get; set; }
 
         private string _name;
         [Column("kontrahent_nazwa")]
@@ -81,6 +83,12 @@ namespace Fiscal_Management_System.model.client
             set { _email = value; OnPropertyChanged("Email"); }
         }
 
+       // [ForeignKey("Revenue")]
+        [Column("urzad_id")]
+        public int RevenueId { get; set; }
+        [ForeignKey("RevenueId")]
+        public Revenue Revenue { get; set; }
+
         /// <summary>
         /// Copy contructor
         /// </summary>
@@ -97,6 +105,8 @@ namespace Fiscal_Management_System.model.client
             this.PostalCode = c.PostalCode;
             this.Phone = c.Phone;
             this.Email = c.Email;
+            this.RevenueId = c.Revenue.ID;
+            this.Revenue = c.Revenue;
         }
 
         public Client() { }

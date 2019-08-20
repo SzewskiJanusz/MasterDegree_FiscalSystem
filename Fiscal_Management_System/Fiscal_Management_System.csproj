@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,16 +63,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="model\client\ClientRepository.cs" />
+    <Compile Include="model\revenue\Revenue.cs" />
+    <Compile Include="model\revenue\RevenueRepository.cs" />
+    <Compile Include="repositories\EntityRepository.cs" />
+    <Compile Include="repositories\IRepository.cs" />
     <Compile Include="model\client\Client.cs" />
-    <Compile Include="model\client\ClientService.cs" />
-    <Compile Include="model\EntitySearcher.cs" />
+    <Compile Include="EntitySearcher.cs" />
+    <Compile Include="model\FiscalDbContext.cs" />
     <Compile Include="model\validation_rules\GrandLetterFirstValidationRule.cs" />
     <Compile Include="model\validation_rules\NoLettersValidationRule.cs" />
     <Compile Include="model\validation_rules\NoNumbersValidationRule.cs" />
     <Compile Include="model\validation_rules\OnlyNumbersValidationRule.cs" />
     <Compile Include="model\validation_rules\TextLengthValidationRule.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="viewmodels\client\AddEditOperationViewModel.cs" />
+    <Compile Include="viewmodels\client\ClientAddViewModel.cs" />
+    <Compile Include="viewmodels\client\ClientEditViewModel.cs" />
     <Compile Include="viewmodels\client\ClientViewModel.cs" />
+    <Compile Include="viewmodels\client\RevenueManager.cs" />
+    <Compile Include="viewmodels\client\StateManager.cs" />
+    <Compile Include="viewmodels\ComboBoxManager.cs" />
     <Compile Include="views\client\AddOrEditClient.xaml.cs">
       <DependentUpon>AddOrEditClient.xaml</DependentUpon>
     </Compile>
@@ -125,6 +138,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="viewmodels\revenue\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

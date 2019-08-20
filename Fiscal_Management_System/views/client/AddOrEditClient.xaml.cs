@@ -24,13 +24,18 @@ namespace Fiscal_Management_System.views.client
         public AddOrEditClient()
         {
             InitializeComponent();
-            this.DataContext = new ClientViewModel();
+            this.DataContext = new ClientAddViewModel();
         }
 
         public AddOrEditClient(Client c)
         {
             InitializeComponent();
-            this.DataContext = new ClientViewModel(c);
+            this.DataContext = new ClientEditViewModel(c);
+        }
+
+        public void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }

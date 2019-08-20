@@ -1,7 +1,10 @@
 ﻿using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.client;
 using Fiscal_Management_System.views.client;
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Fiscal_Management_System.viewmodels.client
@@ -18,53 +21,8 @@ namespace Fiscal_Management_System.viewmodels.client
             set { _entitySearcher = value; }
         }
 
-        /// <summary>
-        /// Binding client with datagrid and textboxes during addition
-        /// </summary>
         private Client _client;
-        public Client Client
-        {
-            get { return _client; }
-            set { _client = value; }
-        }
-
-        /// <summary>
-        /// Collection used to view data in datagrid
-        /// </summary>
-        public ObservableCollection<Client> Clients
-        {
-            get;
-            set;
-        }
-
-        public string ButtonText { get; set; }
-        public string WindowTitle { get; set; }
-
-        private ICommand _confirmAdditionOfClientButtonCommand;
-        public ICommand ConfirmAdditionOfClientButtonCommand
-        {
-            get
-            {
-                if (_confirmAdditionOfClientButtonCommand == null)
-                {
-                    _confirmAdditionOfClientButtonCommand = new RelayCommand(o =>
-                    {
-                        ClientService cs = new ClientService();
-                        Client unboundClient = new Client((Client)o);
-                        if (ButtonText == "OK")
-                        {
-                            cs.Edit(unboundClient);
-                        }
-                        else
-                        {
-                            cs.Add(unboundClient);
-                        }
-                    }, o => true);
-                }
-
-                return _confirmAdditionOfClientButtonCommand;
-            }
-        }
+        public Client Client { get { return _client; } set { _client = value; } }
 
         private ICommand _goToAddClientButtonCommand;
         public ICommand GoToAddClientButtonCommand
@@ -74,7 +32,11 @@ namespace Fiscal_Management_System.viewmodels.client
                 _goToAddClientButtonCommand = new RelayCommand(o =>
                 {
                     AddOrEditClient addClientWindow = new AddOrEditClient();
-                    addClientWindow.Show();
+                    if ((bool)addClientWindow.ShowDialog())
+                    {
+                        MessageBox.Show("Dodano kontrahenta!");
+                        GetDataFromDB();
+                    }
                 }, o => true);
 
                 return _goToAddClientButtonCommand;
@@ -88,9 +50,13 @@ namespace Fiscal_Management_System.viewmodels.client
             {
                 _goToEditClientButtonCommand = new RelayCommand(o =>
                 {
-                    Client unboundClient = new Client((Client)o);
-                    AddOrEditClient editClientWindow = new AddOrEditClient(unboundClient);
-                    editClientWindow.Show();
+                    Client client = new Client((Client)o);
+                    AddOrEditClient editClientWindow = new AddOrEditClient(client);
+                    if ((bool)editClientWindow.ShowDialog())
+                    {
+                        MessageBox.Show("Kontrahent poprawiony!");
+                        GetDataFromDB();
+                    }
                 }, o => true);
 
                 return _goToEditClientButtonCommand;
@@ -99,22 +65,16 @@ namespace Fiscal_Management_System.viewmodels.client
 
         public ClientViewModel()
         {
-            ClientService cs = new ClientService();
-            Clients = cs.GetAll();
-            EntitySearcher = new EntitySearcher<Client>(Clients);
-            Client = new Client() { Name = "Client's name" };
-            ButtonText = "Dodaj";
-            WindowTitle = "Dodawanie kontrahenta";
+            EntitySearcher = new EntitySearcher<Client>();
+            GetDataFromDB();
         }
 
-        public ClientViewModel(Client c)
+        private void GetDataFromDB()
         {
-            ClientService cs = new ClientService();
-            Clients = cs.GetAll();
-            EntitySearcher = new EntitySearcher<Client>(Clients);
-            Client = new Client(c);
-            ButtonText = "OK";
-            WindowTitle = "Edytowanie kontrahenta";
+            using (var ctx = new FiscalDbContext())
+            {
+                EntitySearcher.Collection = new ObservableCollection<Client>(ctx.Clients.Include("Revenue"));
+            }
         }
     }
 }

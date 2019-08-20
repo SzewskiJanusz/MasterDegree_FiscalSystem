@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\EntitySearcherTest.cs" />
     <Compile Include="model\validation_rules\GrandLetterFirstValidationRuleTest.cs" />
     <Compile Include="model\validation_rules\NoLettersValidationRuleTest.cs" />
     <Compile Include="model\validation_rules\NoNumbersValidationRuleTest.cs" />

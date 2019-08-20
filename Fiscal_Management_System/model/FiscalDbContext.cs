@@ -1,6 +1,7 @@
 namespace Fiscal_Management_System.model
 {
     using Fiscal_Management_System.model.client;
+    using Fiscal_Management_System.model.revenue;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
@@ -18,7 +19,8 @@ namespace Fiscal_Management_System.model
             : base("name=FiscalDbContext")
         {
         }
-        public DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Revenue> Revenues {get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
