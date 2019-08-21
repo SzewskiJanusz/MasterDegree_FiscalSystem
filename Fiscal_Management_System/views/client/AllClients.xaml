@@ -6,7 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
         <!-- Grid Row Def. -->
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" MinHeight="70"/>
@@ -55,9 +54,12 @@
         <DataGrid AutoGenerateColumns="False" Name="DataGrid" SelectedItem="{Binding Client}" ItemsSource="{Binding EntitySearcher.FilteredCollection}" Grid.Row="2" CanUserAddRows="false" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="*"/>
-                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*"/>
                 <DataGridTextColumn Header="NIP" Binding="{Binding NIP}" Width="*" />
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="*" />
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*"/>
+                <DataGridTextColumn Header="Miasto" Binding="{Binding City}" Width="*"/>
+                <DataGridTextColumn Header="Ulica" Binding="{Binding Street}" Width="*"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="*"/>
+                <DataGridTextColumn Header="Województwo" Binding="{Binding State}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

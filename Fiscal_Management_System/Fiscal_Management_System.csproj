@@ -65,7 +65,6 @@
     </ApplicationDefinition>
     <Compile Include="model\client\ClientRepository.cs" />
     <Compile Include="model\device\Device.cs" />
-    <Compile Include="model\Revenue.cs" />
     <Compile Include="model\revenue\Revenue.cs" />
     <Compile Include="model\revenue\RevenueRepository.cs" />
     <Compile Include="repositories\EntityRepository.cs" />
