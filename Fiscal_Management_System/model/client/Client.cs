@@ -1,4 +1,6 @@
-﻿using Fiscal_Management_System.model.revenue;
+﻿using Fiscal_Management_System.model.device;
+using Fiscal_Management_System.model.revenue;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -89,6 +91,9 @@ namespace Fiscal_Management_System.model.client
         [ForeignKey("RevenueId")]
         public Revenue Revenue { get; set; }
 
+        // 0:n on Device relation
+        public ICollection<Device> Devices { get; set; }
+
         /// <summary>
         /// Copy contructor
         /// </summary>
@@ -107,9 +112,13 @@ namespace Fiscal_Management_System.model.client
             this.Email = c.Email;
             this.RevenueId = c.Revenue.ID;
             this.Revenue = c.Revenue;
+            this.Devices = c.Devices;
         }
 
-        public Client() { }
+        public Client()
+        {
+            Devices = new HashSet<Device>();
+        }
 
         #region INotifyPropertyChanged things
         public event PropertyChangedEventHandler PropertyChanged;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-namespace Fiscal_Management_System.viewmodels.client
+namespace Fiscal_Management_System.viewmodels
 {
     public abstract class AddEditOperationViewModel<T> : INotifyPropertyChanged
     {

@@ -2,12 +2,12 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Media;
 
 namespace Fiscal_Management_System
 {
     public class EntitySearcher<T> : INotifyPropertyChanged
     {
-
         public EntitySearcher(){}
 
         public EntitySearcher(ObservableCollection<T> col)

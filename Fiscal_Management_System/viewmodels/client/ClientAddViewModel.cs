@@ -18,10 +18,14 @@ namespace Fiscal_Management_System.viewmodels.client
 
         public override void Operation(Client entity)
         {
+            Revenue r;
             using (var ctx = new FiscalDbContext())
             {
-                Revenue r = ctx.Revenues.Where(x => x.ID == entity.Revenue.ID).FirstOrDefault();
-                entity.Revenue = r;
+                if (entity.Revenue == null)
+                {
+                    r = ctx.Revenues.Where(x => x.ID == entity.Revenue.ID).FirstOrDefault();
+                    entity.Revenue = r;
+                }
                 Client c = new Client(entity);
                 ctx.Clients.Add(c);
                 ctx.SaveChanges();

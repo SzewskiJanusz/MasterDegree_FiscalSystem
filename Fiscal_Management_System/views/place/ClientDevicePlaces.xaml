@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Fiscal_Management_System.views.place.ClientDevicePlaces"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fiscal_Management_System.views.device"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Grid Row Def. -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" MinHeight="70"/>
+            <RowDefinition Height="0.5*" MinHeight="46"/>
+            <RowDefinition Height="0.7*" MinHeight="46"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <!-- Title -->
+        <Label Content="Miejsca instalacji urządzeń" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+        <!-- Client (if viable) -->
+        <Label Content="{Binding Client.Name}" FontSize="30" Grid.Row="1" HorizontalAlignment="Center"/>
+
+        <!-- Buttons and search textbox-->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+            <Button Content="Dodaj" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToAddDeviceWithNewPlaceButtonCommand}"/>
+            
+            <!-- Separator -->
+            <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
+            
+            <!-- Client's devices-->
+            <Button Content="Pokaż urządzenia" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToClientDevicesButtonCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=SelectedIndex, ElementName=DataGrid}" Value="-1"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Separator -->
+            <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
+
+            <!-- Search label and textbox-->
+            <Label Content="Szukaj" Margin="10,10,10,10" MinHeight="26"/>
+            <TextBox Width="200" Margin="10,10,10,10" MaxHeight="20" Text="{Binding EntitySearcher.SearchText, UpdateSourceTrigger=PropertyChanged}"  />
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid AutoGenerateColumns="False" Name="DataGrid" SelectedItem="{Binding Place}" ItemsSource="{Binding EntitySearcher.FilteredCollection}" Grid.Row="3" CanUserAddRows="false" CanUserDeleteRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Województwo" Binding="{Binding State}" Width="*"/>
+                <DataGridTextColumn Header="Miasto" Binding="{Binding City}" Width="*"/>
+                <DataGridTextColumn Header="Ulica" Binding="{Binding Street}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

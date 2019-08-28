@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fiscal_Management_System.model.client.Client" Collapsed="true">
+    <Position X="10.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAAgAAIIAAACAQAwIAAAAAQCAIAJCACCBc=</HashCode>
+      <FileName>model\client\Client.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.model.device.Device" Collapsed="true">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABEAAAAVChAgAoAIAEIIBgQEAIAAAAEgAAAAABAQ=</HashCode>
+      <FileName>model\device\Device.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.model.client.ClientRepository" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>model\client\ClientRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.repositories.EntityRepository&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAIAAAgAAAAJAAAAABAAAAAAIAAACAgAAAAAAAAg=</HashCode>
+      <FileName>repositories\EntityRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.App" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.EntitySearcher&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAQEAEIQAAAAAAgAAEAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>EntitySearcher.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.model.client.RevenueRepository" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>model\revenue\RevenueRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.model.devicemodel.DeviceModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgAAAIAAAAASCwAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>model\devicemodel\DeviceModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.model.FiscalDbContext" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAUAAAAAAAAEAAAAEAAAE=</HashCode>
+      <FileName>model\FiscalDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.place.Place" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAIIAAACAAAwAAAAAAAAAIABCACAAA=</HashCode>
+      <FileName>model\place\Place.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.model.revenue.Revenue" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAIACAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>model\revenue\Revenue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.validation_rules.GrandLetterFirstValidationRule" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>model\validation_rules\GrandLetterFirstValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.validation_rules.NoLettersValidationRule" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>model\validation_rules\NoLettersValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.validation_rules.NoNumbersValidationRule" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>model\validation_rules\NoNumbersValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.validation_rules.OnlyNumbersAndLettersValidationRule" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>model\validation_rules\OnlyNumbersAndLettersValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.validation_rules.OnlyNumbersValidationRule" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>model\validation_rules\OnlyNumbersValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.model.validation_rules.TextLengthValidationRule" Collapsed="true">
+    <Position X="16.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAABAAAAAAAAAAAQAAAAAAAAAQAABAAAA=</HashCode>
+      <FileName>model\validation_rules\TextLengthValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.Properties.Resources" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.Properties.Settings" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.AddEditOperationViewModel&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAgAAQAAAAAAAIAACAAAAgAAAAAAAAAEAEAAAIAA=</HashCode>
+      <FileName>viewmodels\AddEditOperationViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.ComboBoxManager&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgACAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>viewmodels\ComboBoxManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.MainViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABIAAAAAAAgAAQAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>viewmodels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.client.ClientAddViewModel" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAEAAIAQAAA=</HashCode>
+      <FileName>viewmodels\client\ClientAddViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.client.ClientEditViewModel" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="2.25" />
+    <InheritanceLine Type="Fiscal_Management_System.viewmodels.AddEditOperationViewModel&lt;T&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="4.875" Y="2.562" />
+        <Point X="4.875" Y="2.864" />
+        <Point X="1.625" Y="2.864" />
+        <Point X="1.625" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAEAAIAQAAA=</HashCode>
+      <FileName>viewmodels\client\ClientEditViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.client.ClientViewModel" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAEAAAAAAAAIEgBAQAAAAAIAAIQAACBQ=</HashCode>
+      <FileName>viewmodels\client\ClientViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.client.StateManager" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>viewmodels\client\StateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.client.RevenueManager" Collapsed="true">
+    <Position X="5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>viewmodels\revenue\RevenueManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.device.DeviceAddViewModel" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgEgACgAAAAAAAAAAAAAAAEEAAIEAAAQ=</HashCode>
+      <FileName>viewmodels\device\DeviceAddViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.device.DeviceEditViewModel" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgEgACgAAAAAAAAAAAAAAAEEAAIEAAAQ=</HashCode>
+      <FileName>viewmodels\device\DeviceEditViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.device.DeviceViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAkAAIAAACAIKgBIAgAAAAEAAAAAAABQ=</HashCode>
+      <FileName>viewmodels\device\DeviceViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.devicemodel.DeviceModelManager" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>viewmodels\devicemodel\DeviceModelManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.viewmodels.place.PlaceViewModel" Collapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgKAAAAAAAAAAEAAAAAAAAJAABAAAAAAAEAAAAAAABQ=</HashCode>
+      <FileName>viewmodels\place\PlaceViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fiscal_Management_System.views.client.AddOrEditClient" BaseTypeListCollapsed="true">
+    <Position X="7" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>views\client\AddOrEditClient.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.views.client.AllClients" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\client\AllClients.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.views.device.AddOrEditDevice" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>views\device\AddOrEditDevice.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.views.device.AllDevices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\device\AllDevices.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.views.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Fiscal_Management_System.views.place.ClientDevicePlaces" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\place\ClientDevicePlaces.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Fiscal_Management_System.repositories.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAIAAACAgAAAAAAAAA=</HashCode>
+      <FileName>repositories\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Fiscal_Management_System.views.IMainWindow" Collapsed="true">
+    <Position X="9.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>views\IMainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

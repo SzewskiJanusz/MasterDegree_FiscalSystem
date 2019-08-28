@@ -1,4 +1,4 @@
-﻿<Window x:Class="Fiscal_Management_System.MainWindow"
+﻿<Window x:Class="Fiscal_Management_System.views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -41,7 +41,9 @@
         <!-- Tool bar -->
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button Content="Add" />
+                <Button Content="Cofnij" Command="{Binding SetPreviousUserControlButtonCommand}" />
+                <Button Content="Dalej" Command="{Binding SetNextUserControlButtonCommand}"/>
+                <Separator />
             </ToolBar>
         </ToolBarTray>
         <!-- Side and main panel -->
@@ -68,9 +70,9 @@
                 <Button Content="Usługi" Grid.Row="2"/>
             </Grid>
             <!-- Main panel -->
-            <ItemsControl Grid.Column="1" x:Name="MainTab">
+            <UserControl Content="{Binding UserControl}" Grid.Column="1"/>
 
-            </ItemsControl>
+
         </Grid>
     </DockPanel>
 </Window>

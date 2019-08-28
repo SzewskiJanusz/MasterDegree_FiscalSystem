@@ -17,7 +17,6 @@ namespace Fiscal_Management_System.model.revenue
         [Column("urzad_ulica")]
         public string Street { get; set; }
 
-       // [ForeignKey("RevenueId")]
         public ICollection<Client> Clients { get; set; }
 
         public Revenue()

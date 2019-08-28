@@ -21,8 +21,6 @@ namespace Fiscal_Management_System.viewmodels.client
                 repo.Edit(repo.Get(entity.ID), entity);
                 repo.Save();
             }
-
-            
         }
 
         public ClientEditViewModel(Client c)

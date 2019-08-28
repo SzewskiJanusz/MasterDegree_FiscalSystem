@@ -40,7 +40,7 @@
             <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
             
             <!-- Client's devices-->
-            <Button Content="Urządzenia" Margin="20,10,20,10" MinWidth="120" MinHeight="26"/>
+            <Button Content="Urządzenia" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToClientPlacesButtonCommand}" CommandParameter="{Binding Client}"/>
 
             <!-- Separator -->
             <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />

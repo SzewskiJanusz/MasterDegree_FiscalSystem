@@ -1,6 +1,9 @@
 namespace Fiscal_Management_System.model
 {
     using Fiscal_Management_System.model.client;
+    using Fiscal_Management_System.model.device;
+    using Fiscal_Management_System.model.devicemodel;
+    using Fiscal_Management_System.model.place;
     using Fiscal_Management_System.model.revenue;
     using System;
     using System.Data.Entity;
@@ -21,6 +24,9 @@ namespace Fiscal_Management_System.model
         }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Revenue> Revenues {get; set;}
+        public virtual DbSet<Device> Devices {get; set;}
+        public virtual DbSet<DeviceModel> DeviceModels {get; set;}
+        public virtual DbSet<Place> Places {get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

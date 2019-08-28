@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fiscal_Management_System.viewmodels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,13 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fiscal_Management_System
+namespace Fiscal_Management_System.views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +25,8 @@ namespace Fiscal_Management_System
         public MainWindow()
         {
             InitializeComponent();
+            this.Language = XmlLanguage.GetLanguage("pl-PL");
+            this.DataContext = new MainViewModel();
         }
     }
 }
