@@ -1,6 +1,7 @@
 ﻿using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.client;
 using Fiscal_Management_System.model.revenue;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Fiscal_Management_System.viewmodels.client
@@ -16,20 +17,16 @@ namespace Fiscal_Management_System.viewmodels.client
         private RevenueManager _revenueManager;
         public RevenueManager RevenueManager { get { return _revenueManager; } set { _revenueManager = value; } }
 
-        public override void Operation(Client entity)
+        public override void OperateOnDatabase(Client entity)
         {
-            Revenue r;
-            using (var ctx = new FiscalDbContext())
+            if (Context.Revenues != null)
             {
-                if (entity.Revenue == null)
-                {
-                    r = ctx.Revenues.Where(x => x.ID == entity.Revenue.ID).FirstOrDefault();
-                    entity.Revenue = r;
-                }
-                Client c = new Client(entity);
-                ctx.Clients.Add(c);
-                ctx.SaveChanges();
+                Revenue r;
+                r = Context.Revenues.Where(x => x.ID == entity.Revenue.ID).FirstOrDefault();
+                entity.Revenue = r;
             }
+            Client c = new Client(entity);
+            Context.Clients.Add(c);
         }
 
         public ClientAddViewModel()
@@ -43,6 +40,11 @@ namespace Fiscal_Management_System.viewmodels.client
 
             ButtonText = "Dodaj";
             WindowTitle = "Dodawanie kontrahenta";
+        }
+
+        public ClientAddViewModel(FiscalDbContext context) : this()
+        {
+            Context = context;
         }
     }
 }

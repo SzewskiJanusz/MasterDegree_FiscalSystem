@@ -28,7 +28,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             
             <!-- Show/hide liquidated devices -->
-            <Button Content="{Binding ShowHideLiquidatedButtonText, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,10,10" MinWidth="80" MinHeight="26" Command="{Binding ShowHideLiquidatedButtonCommand}"/>
+            <Button Name="LiquidButton" Content="{Binding ShowHideLiquidatedButtonText, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,10,10" MinWidth="80" MinHeight="26" Command="{Binding ShowHideLiquidatedButtonCommand}"/>
             
             <!-- Add and edit client button -->
             <Button Content="Dodaj" Margin="0,10,10,10" MinWidth="80" MinHeight="26" Command="{Binding GoToAddDeviceButtonCommand}">
@@ -65,18 +65,18 @@
             <!-- Separator -->
             <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
 
-            <!-- Client's devices-->
+            <!-- Liquidate device-->
             <Button Content="Likwidacja" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToLiquidateDeviceButtonCommand}" CommandParameter="{Binding Device}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="True"/>
                         <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding Path=SelectedIndex, ElementName=DataGrid}" Value="-1"/>
-                                </MultiDataTrigger.Conditions>
+                            <DataTrigger Binding="{Binding Path=SelectedIndex, ElementName=DataGrid}" Value="-1">
                                 <Setter Property="IsEnabled" Value="False"/>
-                            </MultiDataTrigger>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=ShowHideLiquidatedButtonText}" Value="Ukryj zlikwidowane">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>

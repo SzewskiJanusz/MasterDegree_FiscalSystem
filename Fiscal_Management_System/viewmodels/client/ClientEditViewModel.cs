@@ -14,22 +14,23 @@ namespace Fiscal_Management_System.viewmodels.client
         private RevenueManager _revenueManager;
         public RevenueManager RevenueManager { get { return _revenueManager; } set { _revenueManager = value; } }
 
-        public override void Operation(Client entity)
+        public override void OperateOnDatabase(Client entity)
         {
-            using (var repo = new ClientRepository(new FiscalDbContext()))
-            {
-                repo.Edit(repo.Get(entity.ID), entity);
-                repo.Save();
-            }
+            Context.Entry(Context.Clients.Find(entity.ID)).CurrentValues.SetValues(entity);
         }
 
         public ClientEditViewModel(Client c)
         {
             StateManager = new StateManager();
             RevenueManager = new RevenueManager();
-            Entity = c;
+            Entity = new Client(c);
             ButtonText = "Edytuj";
             WindowTitle = "Edytowanie kontrahenta";
+        }
+
+        public ClientEditViewModel(FiscalDbContext context, Client c) : this(c)
+        {
+            Context = context;
         }
     }
 }

@@ -1,34 +1,22 @@
 ﻿using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.client;
-using Fiscal_Management_System.views;
 using Fiscal_Management_System.views.client;
-using Fiscal_Management_System.views.device;
 using Fiscal_Management_System.views.place;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.Data.Entity;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Fiscal_Management_System.viewmodels.client
 {
-    public class ClientViewModel
+    public class ClientViewModel : EntityViewModel<Client>
     {
         /// <summary>
-        /// Provides searching mechanisms
+        /// Add command
         /// </summary>
-        private EntitySearcher<Client> _entitySearcher;
-        public EntitySearcher<Client> EntitySearcher
-        {
-            get { return _entitySearcher; }
-            set { _entitySearcher = value; }
-        }
-
-        private Client _client;
-        public Client Client { get { return _client; } set { _client = value; } }
-
         private ICommand _goToAddClientButtonCommand;
         public ICommand GoToAddClientButtonCommand
         {
@@ -48,6 +36,9 @@ namespace Fiscal_Management_System.viewmodels.client
             }
         }
 
+        /// <summary>
+        /// Edit command
+        /// </summary>
         private ICommand _goToEditClientButtonCommand;
         public ICommand GoToEditClientButtonCommand
         {
@@ -55,7 +46,7 @@ namespace Fiscal_Management_System.viewmodels.client
             {
                 _goToEditClientButtonCommand = new RelayCommand(o =>
                 {
-                    Client client = new Client((Client)o);
+                    Client client= new Client((Client)o);
                     AddOrEditClient editClientWindow = new AddOrEditClient(client);
                     if ((bool)editClientWindow.ShowDialog())
                     {
@@ -68,6 +59,10 @@ namespace Fiscal_Management_System.viewmodels.client
             }
         }
 
+
+        /// <summary>
+        /// Go to client's installation places command
+        /// </summary>
         private ICommand _goToClientPlacesButtonCommand;
         public ICommand GoToClientPlacesButtonCommand
         {
@@ -83,20 +78,28 @@ namespace Fiscal_Management_System.viewmodels.client
             }
         }
 
-        private UserControl _userControl;
-        public UserControl UserControl
-        {
-            get { return _userControl; }
-            set { _userControl = value; }
-        }
-
-        public Func<UserControl, int> UserControlSwitcher;
-
-        public ClientViewModel(Func<UserControl, int> ucSetMethod)
+        public ClientViewModel(Func<UserControl, int> ucSetMethod) : base(ucSetMethod)
         {
             UserControlSwitcher = ucSetMethod;
             EntitySearcher = new EntitySearcher<Client>();
             GetDataFromDB();
+        }
+
+        public ClientViewModel(Func<UserControl, int> ucSetMethod, FiscalDbContext context) : base(ucSetMethod)
+        {
+            EntitySearcher = new EntitySearcher<Client>();
+        }
+
+        public IEnumerable<Client> GetDataFromDB(DbContext context)
+        {
+            EntitySearcher.Collection = new ObservableCollection<Client>
+            (
+                    context.Set<Client>()
+                    .Include("Revenue")
+                    .Include("Devices")
+                    .Include("Devices.Place")
+            );
+            return EntitySearcher.Collection;
         }
 
         private void GetDataFromDB()
@@ -112,5 +115,6 @@ namespace Fiscal_Management_System.viewmodels.client
                 );
             }
         }
+
     }
 }

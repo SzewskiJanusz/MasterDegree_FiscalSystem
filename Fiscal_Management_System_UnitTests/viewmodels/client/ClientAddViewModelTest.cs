@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using Moq;
+using System.Data.Entity;
 using System.Linq;
 using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.client;
@@ -14,7 +17,6 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
         [TestMethod]
         public void AdditionOfClientTest()
         {
-            ClientAddViewModel cvm = new ClientAddViewModel();
             Client client = new Client()
             {
                 Name = "TestClient",
@@ -35,15 +37,43 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
                 }
             };
 
-            cvm.Operation(client);
+            var mockSet = new Mock<DbSet<Client>>();
+            var mockContext = new Mock<FiscalDbContext>();
+            mockContext.Setup(m => m.Clients).Returns(mockSet.Object);
+            ClientAddViewModel cavm = new ClientAddViewModel(mockContext.Object);
+            cavm.Operation(client);
 
-            bool exists;
-            using (FiscalDbContext ctx = new FiscalDbContext())
+            mockSet.Verify(m => m.Add(It.IsAny<Client>()), Times.Once());
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void AdditionOfClientTest_RevenueIsNull()
+        {
+            Client client = new Client()
             {
-                exists = ctx.Revenues.Include("Revenue").Any(x => x.ID == client.ID);
-            }
+                Name = "TestClient",
+                Symbol = "TestSymbol",
+                NIP = "3234321234",
+                State = "TestState",
+                City = "TestCity",
+                Street = "TestStreet",
+                PostalCode = "11-111",
+                Phone = "123-123-123",
+                Email = "client@test.com",
+                RevenueId = 0,
+                Revenue = null
+            };
 
-            Assert.IsTrue(exists);
+            var mockSet = new Mock<DbSet<Client>>();
+            var mockContext = new Mock<FiscalDbContext>();
+            mockContext.Setup(m => m.Clients).Returns(mockSet.Object);
+            ClientAddViewModel cavm = new ClientAddViewModel(mockContext.Object);
+            cavm.Operation(client);
+
+            mockSet.Verify(m => m.Add(It.IsAny<Client>()), Times.Once());
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
     }
 }

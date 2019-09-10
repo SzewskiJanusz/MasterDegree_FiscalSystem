@@ -39,3 +39,11 @@ C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Managemen
 C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\Fiscal_Management_System_UnitTests.dll.config
 C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\Castle.Core.dll
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\Moq.dll
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\Castle.Core.xml
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\Moq.xml
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Janusz\Desktop\Projekty\MasterDegree\fiscal_management\Fiscal_Management_System_UnitTests\bin\Debug\System.Threading.Tasks.Extensions.xml

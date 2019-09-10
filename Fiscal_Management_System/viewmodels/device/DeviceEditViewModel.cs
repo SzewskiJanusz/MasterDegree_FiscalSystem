@@ -17,7 +17,7 @@ namespace Fiscal_Management_System.viewmodels.device
         private StateManager _stateManager;
         public StateManager StateManager { get { return _stateManager; } set { _stateManager = value; } }
 
-        public override void Operation(Device entity)
+        public override void OperateOnDatabase(Device entity)
         {
             using (var ctx = new FiscalDbContext())
             {/*

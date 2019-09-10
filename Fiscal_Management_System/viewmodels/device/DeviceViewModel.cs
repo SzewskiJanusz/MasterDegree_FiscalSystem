@@ -15,18 +15,8 @@ using System.Windows.Media;
 
 namespace Fiscal_Management_System.viewmodels.device
 {
-    public class DeviceViewModel : INotifyPropertyChanged
+    public class DeviceViewModel : EntityViewModel<Device>, INotifyPropertyChanged
     {
-        /// <summary>
-        /// Provides searching mechanisms
-        /// </summary>
-        private EntitySearcher<Device> _entitySearcher;
-        public EntitySearcher<Device> EntitySearcher
-        {
-            get { return _entitySearcher; }
-            set { _entitySearcher = value; }
-        }
-
         private Device _device;
         public Device Device { get { return _device; } set { _device = value; } }
 
@@ -77,7 +67,6 @@ namespace Fiscal_Management_System.viewmodels.device
             }
         }
 
-
         private ICommand _goToLiquidateDeviceButtonCommand;
         public ICommand GoToLiquidateDeviceButtonCommand
         {
@@ -112,7 +101,6 @@ namespace Fiscal_Management_System.viewmodels.device
             }
         }
 
-        
         private ICommand _showHideLiquidatedButtonCommand;
         public ICommand ShowHideLiquidatedButtonCommand
         {
@@ -172,30 +160,25 @@ namespace Fiscal_Management_System.viewmodels.device
             }
         }
 
-       
-
         private string _showHideLiquidatedButtonText;
         public string ShowHideLiquidatedButtonText
         { get { return _showHideLiquidatedButtonText; } set { _showHideLiquidatedButtonText = value; OnPropertyChanged("ShowHideLiquidatedButtonText"); } }
 
-        public DeviceViewModel()
+        public DeviceViewModel() : base(null)
         {
-            EntitySearcher = new EntitySearcher<Device>();
             ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
             GetDataFromDB();
         }
 
-        public DeviceViewModel(Client c)
+        public DeviceViewModel(Client c) : base(null)
         {
-            EntitySearcher = new EntitySearcher<Device>();
             ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
             Client = c;
             GetDataFromDB(c);
         }
 
-        public DeviceViewModel(Client c, Place p)
+        public DeviceViewModel(Client c, Place p) : base(null)
         {
-            EntitySearcher = new EntitySearcher<Device>();
             ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
             Client = c;
             Place = p;

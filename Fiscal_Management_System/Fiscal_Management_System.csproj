@@ -90,6 +90,7 @@
     <Compile Include="viewmodels\device\DeviceAddViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceEditViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceViewModel.cs" />
+    <Compile Include="viewmodels\EntityViewModel.cs" />
     <Compile Include="viewmodels\MainViewModel.cs" />
     <Compile Include="viewmodels\place\PlaceViewModel.cs" />
     <Compile Include="viewmodels\revenue\RevenueManager.cs" />
