@@ -4,14 +4,11 @@ using Fiscal_Management_System.model.device;
 using Fiscal_Management_System.model.place;
 using Fiscal_Management_System.views.device;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace Fiscal_Management_System.viewmodels.device
 {
@@ -23,7 +20,7 @@ namespace Fiscal_Management_System.viewmodels.device
         private Place _place;
         public Place Place { get { return _place; } set { _place = value; } }
 
-        public string PlaceOfDevice { get { return Place.City + " " + Place.Street + " " + Place.State; } }
+        public string PlaceOfDevice { get { return Place != null ? Place.City + " " + Place.Street + " " + Place.State : null; } }
 
         private Client _client;
         public Client Client { get { return _client; } set { _client = value; OnPropertyChanged("Client"); } }

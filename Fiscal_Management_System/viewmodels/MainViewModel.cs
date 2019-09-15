@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Fiscal_Management_System.views.service;
 
 namespace Fiscal_Management_System.viewmodels
 {
@@ -62,6 +63,48 @@ namespace Fiscal_Management_System.viewmodels
                 }, o => true);
 
                 return _setNextUserControlButtonCommand;
+            }
+        }
+
+        private ICommand _goToClientsButtonCommand;
+        public ICommand GoToClientsButtonCommand
+        {
+            get
+            {
+                _goToClientsButtonCommand = new RelayCommand(o =>
+                {
+                    SetUserControl(new AllClients(SetUserControl));
+                }, o => true);
+
+                return _goToClientsButtonCommand;
+            }
+        }
+
+        private ICommand _goToDevicesButtonCommand;
+        public ICommand GoToDevicesButtonCommand
+        {
+            get
+            {
+                _goToDevicesButtonCommand = new RelayCommand(o =>
+                {
+                    SetUserControl(new AllDevices());
+                }, o => true);
+
+                return _goToDevicesButtonCommand;
+            }
+        }
+
+        private ICommand _goToServicesButtonCommand;
+        public ICommand GoToServicesButtonCommand
+        {
+            get
+            {
+                _goToServicesButtonCommand = new RelayCommand(o =>
+                {
+                    SetUserControl(new AllServices(null));
+                }, o => true);
+
+                return _goToServicesButtonCommand;
             }
         }
 

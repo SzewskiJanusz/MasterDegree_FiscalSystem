@@ -70,6 +70,8 @@
     <Compile Include="model\place\Place.cs" />
     <Compile Include="model\revenue\Revenue.cs" />
     <Compile Include="model\revenue\RevenueRepository.cs" />
+    <Compile Include="model\service\Service.cs" />
+    <Compile Include="model\service\TypeOfService.cs" />
     <Compile Include="model\validation_rules\OnlyNumbersAndLettersValidationRule.cs" />
     <Compile Include="repositories\EntityRepository.cs" />
     <Compile Include="repositories\IRepository.cs" />
@@ -96,6 +98,8 @@
     <Compile Include="viewmodels\revenue\RevenueManager.cs" />
     <Compile Include="viewmodels\client\StateManager.cs" />
     <Compile Include="viewmodels\ComboBoxManager.cs" />
+    <Compile Include="viewmodels\service\ServiceDetailsViewModel.cs" />
+    <Compile Include="viewmodels\service\ServicesViewModel.cs" />
     <Compile Include="views\client\AddOrEditClient.xaml.cs">
       <DependentUpon>AddOrEditClient.xaml</DependentUpon>
     </Compile>
@@ -110,6 +114,12 @@
     </Compile>
     <Compile Include="views\place\ClientDevicePlaces.xaml.cs">
       <DependentUpon>ClientDevicePlaces.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\service\AllServices.xaml.cs">
+      <DependentUpon>AllServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\service\ServiceDetails.xaml.cs">
+      <DependentUpon>ServiceDetails.xaml</DependentUpon>
     </Compile>
     <Page Include="views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +151,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\place\ClientDevicePlaces.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\service\AllServices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\service\ServiceDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

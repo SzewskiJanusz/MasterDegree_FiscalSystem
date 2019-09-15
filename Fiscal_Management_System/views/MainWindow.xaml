@@ -65,9 +65,9 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
-                <Button Content="Kontrahenci" Grid.Row="0"/>
-                <Button Content="Wszystkie urządzenia" Grid.Row="1"/>
-                <Button Content="Usługi" Grid.Row="2"/>
+                <Button Content="Kontrahenci" Grid.Row="0" Command="{Binding GoToClientsButtonCommand}"/>
+                <Button Content="Wszystkie urządzenia" Grid.Row="1" Command="{Binding GoToDevicesButtonCommand}"/>
+                <Button Content="Usługi" Grid.Row="2" Command="{Binding GoToServicesButtonCommand}"/>
             </Grid>
             <!-- Main panel -->
             <UserControl Content="{Binding UserControl}" Grid.Column="1"/>

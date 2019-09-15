@@ -1,3 +1,5 @@
+using Fiscal_Management_System.model.service;
+
 namespace Fiscal_Management_System.model
 {
     using Fiscal_Management_System.model.client;
@@ -27,6 +29,8 @@ namespace Fiscal_Management_System.model
         public virtual DbSet<Device> Devices {get; set;}
         public virtual DbSet<DeviceModel> DeviceModels {get; set;}
         public virtual DbSet<Place> Places {get; set;}
+        public virtual DbSet<Service> Services {get; set;}
+        public virtual DbSet<TypeOfService> TypeOfServices {get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
