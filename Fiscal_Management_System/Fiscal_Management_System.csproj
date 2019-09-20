@@ -67,6 +67,7 @@
     <Compile Include="model\client\ClientRepository.cs" />
     <Compile Include="model\devicemodel\DeviceModel.cs" />
     <Compile Include="model\device\Device.cs" />
+    <Compile Include="model\IDbContext.cs" />
     <Compile Include="model\place\Place.cs" />
     <Compile Include="model\revenue\Revenue.cs" />
     <Compile Include="model\revenue\RevenueRepository.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="viewmodels\ComboBoxManager.cs" />
     <Compile Include="viewmodels\service\ServiceDetailsViewModel.cs" />
     <Compile Include="viewmodels\service\ServicesViewModel.cs" />
+    <Compile Include="viewmodels\service\SetServiceAsDoneViewModel.cs" />
     <Compile Include="views\client\AddOrEditClient.xaml.cs">
       <DependentUpon>AddOrEditClient.xaml</DependentUpon>
     </Compile>
@@ -120,6 +122,9 @@
     </Compile>
     <Compile Include="views\service\ServiceDetails.xaml.cs">
       <DependentUpon>ServiceDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\service\SetAsDone.xaml.cs">
+      <DependentUpon>SetAsDone.xaml</DependentUpon>
     </Compile>
     <Page Include="views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\service\ServiceDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\service\SetAsDone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

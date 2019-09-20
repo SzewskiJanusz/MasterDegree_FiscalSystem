@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbInitForTests.cs" />
+    <Compile Include="FakeDbSet.cs" />
     <Compile Include="model\EntitySearcherTest.cs" />
     <Compile Include="model\validation_rules\GrandLetterFirstValidationRuleTest.cs" />
     <Compile Include="model\validation_rules\NoLettersValidationRuleTest.cs" />
@@ -79,9 +80,10 @@
     <Compile Include="model\validation_rules\OnlyNumbersValidationRuleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="model\validation_rules\TextLengthValidationRuleTest.cs" />
-    <Compile Include="viewmodels\client\ClientEditViewModelTest.cs" />
     <Compile Include="viewmodels\client\ClientViewModelTest.cs" />
     <Compile Include="viewmodels\client\ClientAddViewModelTest.cs" />
+    <Compile Include="viewmodels\device\DeviceAddViewModelTest.cs" />
+    <Compile Include="viewmodels\device\DeviceViewModelTest.cs" />
     <Compile Include="viewmodels\MainWindowViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>

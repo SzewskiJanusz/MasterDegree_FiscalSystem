@@ -13,7 +13,7 @@ namespace Fiscal_Management_System.model.service
         [Column("typ_id")]
         public int Id { get; set; }
         [Column("typ_nazwa")]
-        public int Name { get; set; }
+        public string Name { get; set; }
         [Column("typ_cena")]
         public Decimal Price { get; set; }
 

@@ -14,7 +14,7 @@ namespace Fiscal_Management_System.viewmodels
         /// <summary>
         /// Context of EF
         /// </summary>
-        public FiscalDbContext Context;
+        public IDbContext Context;
 
         /// <summary>
         /// Abstract method. Override with add/edit implementation

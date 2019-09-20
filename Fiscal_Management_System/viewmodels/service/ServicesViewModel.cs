@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.service;
+using Fiscal_Management_System.views.service;
 
 namespace Fiscal_Management_System.viewmodels.service
 {
@@ -20,53 +21,12 @@ namespace Fiscal_Management_System.viewmodels.service
             using (var context = new FiscalDbContext())
             {
                 EntitySearcher.Collection = new ObservableCollection<Service>(
-                    context.Services.Include("Device").Include("Device.Place").Include("Device.Client").ToList());
-            }
-
-        }
-
-        /// <summary>
-        /// Add command
-        /// </summary>
-        private ICommand _goToAddServiceButtonCommand;
-        public ICommand GoToAddServiceButtonCommand
-        {
-            get
-            {
-                _goToAddServiceButtonCommand = new RelayCommand(o =>
-                {/*
-                    AddOrEditService addServiceWindow = new AddOrEditService();
-                    if ((bool)addServiceWindow.ShowDialog())
-                    {
-                        MessageBox.Show("Dodano usługę!");
-                      //  GetDataFromDB();
-                    }*/
-                }, o => true);
-
-                return _goToAddServiceButtonCommand;
-            }
-        }
-
-        /// <summary>
-        /// Edit command
-        /// </summary>
-        private ICommand _goToEditServiceButtonCommand;
-        public ICommand GoToEditServiceButtonCommand
-        {
-            get
-            {
-                _goToEditServiceButtonCommand = new RelayCommand(o =>
-                {
-                    Service serv = new Service((Service)o);/*
-                    AddOrEditService editServiceWindow = new AddOrEditService(serv);
-                    if ((bool)editServiceWindow.ShowDialog())
-                    {
-                        MessageBox.Show("Usługa poprawiona!");
-                      //  GetDataFromDB();
-                    }*/
-                }, o => true);
-
-                return _goToEditServiceButtonCommand;
+                    context.Services.
+                        Include("Device").
+                        Include("Device.Place").
+                        Include("Device.Client").
+                        Include("TypeOfService").
+                        ToList());
             }
         }
 
@@ -81,7 +41,9 @@ namespace Fiscal_Management_System.viewmodels.service
                 _goToServiceDetailsButtonCommand = new RelayCommand(o =>
                 {
                     Service serv = new Service((Service)o);
-                    
+                    ServiceDetails detailsWindow = new ServiceDetails(serv);
+                    detailsWindow.ShowDialog();
+
                 }, o => true);
 
                 return _goToServiceDetailsButtonCommand;

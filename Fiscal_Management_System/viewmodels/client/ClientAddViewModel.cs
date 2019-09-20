@@ -19,14 +19,14 @@ namespace Fiscal_Management_System.viewmodels.client
 
         public override void OperateOnDatabase(Client entity)
         {
-            if (Context.Revenues != null)
+            if (Context.Set<Revenue>() != null)
             {
                 Revenue r;
-                r = Context.Revenues.Where(x => x.ID == entity.Revenue.ID).FirstOrDefault();
+                r = Context.Set<Revenue>().Where(x => x.ID == entity.Revenue.ID).FirstOrDefault();
                 entity.Revenue = r;
             }
             Client c = new Client(entity);
-            Context.Clients.Add(c);
+            Context.Set<Client>().Add(c);
         }
 
         public ClientAddViewModel()
@@ -42,7 +42,7 @@ namespace Fiscal_Management_System.viewmodels.client
             WindowTitle = "Dodawanie kontrahenta";
         }
 
-        public ClientAddViewModel(FiscalDbContext context) : this()
+        public ClientAddViewModel(IDbContext context) : this()
         {
             Context = context;
         }

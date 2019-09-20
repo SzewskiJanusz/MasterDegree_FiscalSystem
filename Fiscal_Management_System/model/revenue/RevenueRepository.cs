@@ -15,7 +15,7 @@ namespace Fiscal_Management_System.model.client
 
         public List<string> GetAllNames()
         {
-            return Context.Revenues.Select(x => x.Name).ToList();
+            return Context.Set<Revenue>().Select(x => x.Name).ToList();
         }
 
         public void Dispose()

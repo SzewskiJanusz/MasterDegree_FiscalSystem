@@ -4,8 +4,10 @@ using Fiscal_Management_System.model.device;
 using Fiscal_Management_System.model.place;
 using Fiscal_Management_System.views.device;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -36,7 +38,7 @@ namespace Fiscal_Management_System.viewmodels.device
                     if ((bool)addDeviceWindow.ShowDialog())
                     {
                         MessageBox.Show("Dodano urządzenie!");
-                        GetDataFromDB(Client, Place);
+                        EntitySearcher.Collection = GetDataFromDb(Client, Place);
                     }
                 }, o => true);
 
@@ -56,7 +58,7 @@ namespace Fiscal_Management_System.viewmodels.device
                     if ((bool)editDeviceWindow.ShowDialog())
                     {
                         MessageBox.Show("Urządzenie poprawione!");
-                        GetDataFromDB(Client, Place);
+                        EntitySearcher.Collection = GetDataFromDb(Client, Place);
                     }
                 }, o => true);
 
@@ -83,11 +85,11 @@ namespace Fiscal_Management_System.viewmodels.device
                             MessageBoxButton.YesNo);
                         if (result2 == MessageBoxResult.Yes)
                         {
-                            using (var ctx = new FiscalDbContext())
+                            using (var ctx = Context == null ? new FiscalDbContext() : Context)
                             {
-                                ctx.Devices.FirstOrDefault(x => x.ID == Device.ID).DateOfLiquidation = DateTime.Today;
+                                ctx.Set<Device>().FirstOrDefault(x => x.ID == Device.ID).DateOfLiquidation = DateTime.Today;
                                 ctx.SaveChanges();
-                                GetDataFromDB(Client, Place);
+                                EntitySearcher.Collection = GetDataFromDb(Client, Place);
                             }
                         }
                     }
@@ -107,48 +109,37 @@ namespace Fiscal_Management_System.viewmodels.device
                 {
                     if (ShowHideLiquidatedButtonText == "Pokaż zlikwidowane")
                     {
-                        using (var ctx = new FiscalDbContext())
+                        if (Client == null && Place == null)
                         {
-                            if (Client == null && Place == null)
-                            {
-                                EntitySearcher.Collection =
-                                new ObservableCollection<Device>(ctx.Devices.Include("Client").Include("Place").Include("Model").ToList());
-                            }
-                            else if (Client != null && Place == null)
-                            {
-                                EntitySearcher.Collection =
-                               new ObservableCollection<Device>(ctx.Devices.Include("Client").
-                               Include("Place").Include("Model").Where(x => x.Client.ID == Client.ID).ToList());
-                            }
-                            else
-                            {
-                                EntitySearcher.Collection =
-                                new ObservableCollection<Device>(
-                                    ctx.Devices.Include("Client").Include("Place").Include("Model").
-                                    Where(x => x.Client.ID == Client.ID && x.Place.ID == Place.ID).ToList());
-                            }
-                            ShowHideLiquidatedButtonText = "Ukryj zlikwidowane";
+                            EntitySearcher.Collection = GetAllDevicesFromDb();
                         }
+                        else if (Client != null && Place == null)
+                        {
+                            EntitySearcher.Collection = GetAllDevicesFromDb(Client);
+                        }
+                        else
+                        {
+                            EntitySearcher.Collection = GetAllDevicesFromDb(Client, Place);
+                        }
+
+                        ShowHideLiquidatedButtonText = "Ukryj zlikwidowane";
                     }
                     else
                     {
-                        using (var ctx = new FiscalDbContext())
+                        if (Client == null && Place == null)
                         {
-                            if (Client == null && Place == null)
-                            {
-                                GetDataFromDB();
-                            }
-                            else if (Client != null && Place == null)
-                            {
-                                GetDataFromDB(Client);
-                            }
-                            else
-                            {
-                                GetDataFromDB(Client, Place);
-                            }
-                            ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
+                            EntitySearcher.Collection = GetDataFromDb();
                         }
-
+                        else if (Client != null && Place == null)
+                        {
+                            EntitySearcher.Collection = GetDataFromDb(Client);
+                        }
+                        else
+                        {
+                            EntitySearcher.Collection = GetDataFromDb(Client, Place);
+                        }
+                        
+                        ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
                     }
                     
                 }, o => true);
@@ -164,14 +155,14 @@ namespace Fiscal_Management_System.viewmodels.device
         public DeviceViewModel() : base(null)
         {
             ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
-            GetDataFromDB();
+            EntitySearcher.Collection = GetDataFromDb();
         }
 
         public DeviceViewModel(Client c) : base(null)
         {
             ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
             Client = c;
-            GetDataFromDB(c);
+            EntitySearcher.Collection = GetDataFromDb(c);
         }
 
         public DeviceViewModel(Client c, Place p) : base(null)
@@ -179,39 +170,103 @@ namespace Fiscal_Management_System.viewmodels.device
             ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
             Client = c;
             Place = p;
-            GetDataFromDB(c, p);
+            EntitySearcher.Collection = GetDataFromDb(c, p);
         }
 
-        private void GetDataFromDB()
+        /// <summary>
+        /// Constructor for testing
+        /// </summary>
+        /// <param name="ForTestPurposes"></param>
+        /// <param name="context"></param>
+        public DeviceViewModel(IDbContext context) : base(null, context)
         {
-            using (var ctx = new FiscalDbContext())
-            {
-                EntitySearcher.Collection = new ObservableCollection<Device>(ctx.Devices.Include("Client").Include("Place").Include("Model").Where(x=> !x.DateOfLiquidation.HasValue).ToList());
-            }
+            ShowHideLiquidatedButtonText = "Pokaż zlikwidowane";
         }
 
-        private void GetDataFromDB(Client c)
+        /// <summary>
+        /// All devices
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<Device> GetDataFromDb()
+        {
+            List<Device> devices;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
+            {
+                devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model").
+                    Where(x=> !x.DateOfLiquidation.HasValue).ToList();
+            }
+            return new ObservableCollection<Device>(devices);
+        }
+
+        /// <summary>
+        /// Client's devices
+        /// </summary>
+        /// <param name="c"></param>
+        public ObservableCollection<Device> GetDataFromDb(Client c)
         {
             Client = c;
-            using (var ctx = new FiscalDbContext())
+            List<Device> devices;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
             {
-                EntitySearcher.Collection =
-                    new ObservableCollection<Device>(ctx.Devices.Include("Client").Include("Place").Include("Model").
-                    Where(x => x.ClientId == c.ID && !x.DateOfLiquidation.HasValue).ToList());
+                devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model").
+                    Where(x => x.ClientId == c.ID && !x.DateOfLiquidation.HasValue).ToList();
             }
+            return new ObservableCollection<Device>(devices);
         }
 
-        private void GetDataFromDB(Client c, Place p)
+        /// <summary>
+        /// Client's devices in place
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="p"></param>
+        public ObservableCollection<Device> GetDataFromDb(Client c, Place p)
         {
             Client = c;
-            using (var ctx = new FiscalDbContext())
+            List<Device> devices;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
             {
-                Place pl = ctx.Places.FirstOrDefault(x => x.State == p.State && x.City == p.City && x.Street == p.Street);
+                Place pl = ctx.Set<Place>().FirstOrDefault(x => x.State == p.State && x.City == p.City && x.Street == p.Street);
+                devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model").Where(x =>
+                    x.Client.ID == c.ID && x.Place.ID == pl.ID && !x.DateOfLiquidation.HasValue).ToList();
 
-                EntitySearcher.Collection =
-                    new ObservableCollection<Device>(ctx.Devices.Include("Client").Include("Place").Include("Model").
-                    Where(x => x.Client.ID == c.ID && x.Place.ID == pl.ID && !x.DateOfLiquidation.HasValue).ToList());
             }
+            return new ObservableCollection<Device>(devices);
+        }
+
+        public ObservableCollection<Device> GetAllDevicesFromDb()
+        {
+            List<Device> devices;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
+            {
+                devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model").ToList();
+            }
+            return new ObservableCollection<Device>(devices);
+        }
+
+        public ObservableCollection<Device> GetAllDevicesFromDb(Client c)
+        {
+            List<Device> devices;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
+            {
+                devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model")
+                    .Where(x => x.ClientId == c.ID).ToList();
+
+                EntitySearcher.Collection = new ObservableCollection<Device>(devices);
+            }
+            return new ObservableCollection<Device>(devices);
+        }
+
+        public ObservableCollection<Device> GetAllDevicesFromDb(Client c, Place p)
+        {
+            List<Device> devices;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
+            {
+                devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model")
+                    .Where(x => x.ClientId == c.ID && x.PlaceId == p.ID).ToList();
+
+                EntitySearcher.Collection = new ObservableCollection<Device>(devices);
+            }
+            return new ObservableCollection<Device>(devices);
         }
 
         #region INotifyPropertyChanged things
@@ -223,4 +278,5 @@ namespace Fiscal_Management_System.viewmodels.device
         }
         #endregion
     }
+
 }

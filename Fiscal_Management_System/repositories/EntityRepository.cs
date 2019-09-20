@@ -1,6 +1,7 @@
 ﻿using Fiscal_Management_System.model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -8,10 +9,10 @@ namespace Fiscal_Management_System.repositories
 {
     public class EntityRepository<T> : IRepository<T> where T : class
     {
-        protected FiscalDbContext Context;
+        protected IDbContext Context;
         protected string IncludePath { get; set; }
 
-        public EntityRepository(FiscalDbContext context)
+        public EntityRepository(IDbContext context)
         {
             Context = context;
         }
@@ -21,37 +22,37 @@ namespace Fiscal_Management_System.repositories
             Context.Set<T>().Add(entity);
         }
 
-        public void Remove(T entity)
+        public virtual void Remove(T entity)
         {
             Context.Set<T>().Remove(entity);
         }
 
-        public IEnumerable<T> Find(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> Find(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             return Context.Set<T>().Find(id);
         }
 
-        public T GetByName(string name)
+        public virtual T GetByName(string name)
         {
             return Context.Set<T>().Find(name);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return IncludePath == null ? Context.Set<T>().ToList() : Context.Set<T>().Include(IncludePath).ToList();
         }
 
-        public void Edit(T old_entity, T new_entity)
+        public virtual void Edit(T old_entity, T new_entity)
         {
             Context.Entry(old_entity).CurrentValues.SetValues(new_entity);
         }
 
-        public void Save()
+        public virtual void Save()
         {
             Context.SaveChanges();
         }

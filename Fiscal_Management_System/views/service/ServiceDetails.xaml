@@ -17,7 +17,7 @@
         <!-- Label -->
         <Label Content="Szczegóły usługi" FontSize="26"/>
         <Button Name="btnSetAsDone" Grid.Row="1" Margin="5,8,254,8" Content="Oznacz jako wykonaną" 
-                Command="{Binding GoToSetAsDoneButtonCommand}" CommandParameter="{Binding Entity}"/>
+                Command="{Binding GoToSetAsDoneButtonCommand}" CommandParameter="{Binding Service}"/>
         <!-- Inputs -->
         <GroupBox Header="Dane usługi" Grid.Row="2">
             <Grid>
@@ -44,30 +44,30 @@
                 <Label Grid.Row="5" Content="I serwisant" FontSize="16"/>
                 <!-- Textbox inputs. Stack panels with TextBox + Label for validation output -->
                 <!-- Type of service name-->
-                <TextBox x:Name="tbx_tos" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,0,10"/>
+                <TextBox x:Name="tbx_tos" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Service.TypeOfService.Name}"/>
                 <!-- Client's name -->
-                <TextBox x:Name="tbx_client" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10"/>
+                <TextBox x:Name="tbx_client" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10" Text="{Binding Service.Device.Client.Name}"/>
                 <!-- Device's name -->
-                <TextBox x:Name="tbx_device" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10"/>
+                <TextBox x:Name="tbx_device" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10" Text="{Binding Service.Device.UniqueNumber}"/>
                 <!-- ApproveTime -->
                 <DatePicker SelectedDateFormat="Long" 
                             Grid.Column="1" 
                             Grid.Row="3" 
                             Margin="0,5,0,10" 
-                            SelectedDate="{Binding Entity.ApproveTime}"
+                            SelectedDate="{Binding Service.ApproveTime}"
                             FirstDayOfWeek="Monday"/>
                 <!-- PlannedDateOfExecution -->
                 <DatePicker SelectedDateFormat="Long" 
                             Grid.Column="1" 
                             Grid.Row="4" 
                             Margin="0,5,0,10" 
-                            SelectedDate="{Binding Entity.PlannedDateOfExecution}"
+                            SelectedDate="{Binding Service.PlannedDateOfExecution}"
                             FirstDayOfWeek="Monday"/>
                 <!-- First serviceman -->
-                <TextBox x:Name="tbx_1repairman" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10" />
+                <TextBox x:Name="tbx_1repairman" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10" Text=""/>
 
                 <!-- Add button-->
-                <Button Name="btnOK" Click="closeWindow" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Zamknij" Command="{Binding ConfirmButtonCommand}" CommandParameter="{Binding Entity}"/>
+                <Button Name="btnOK" Click="closeWindow" Grid.Column="1" Grid.Row="10" Margin="0,5,0,5" Content="Zamknij" Command="{Binding ConfirmButtonCommand}"/>
             </Grid>
         </GroupBox>
     </Grid>

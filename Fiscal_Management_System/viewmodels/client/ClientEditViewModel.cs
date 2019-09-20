@@ -1,5 +1,6 @@
 ﻿using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.client;
+using Fiscal_Management_System.model.revenue;
 
 namespace Fiscal_Management_System.viewmodels.client
 {
@@ -15,8 +16,15 @@ namespace Fiscal_Management_System.viewmodels.client
         public RevenueManager RevenueManager { get { return _revenueManager; } set { _revenueManager = value; } }
 
         public override void OperateOnDatabase(Client entity)
-        {
-            Context.Entry(Context.Clients.Find(entity.ID)).CurrentValues.SetValues(entity);
+        { 
+            var aaa = Context.Set<Client>();
+            var aaa1 = Context.Set<Revenue>();
+            var finda = aaa.Find(entity.ID);
+            var entry = Context.Entry(finda);
+            var curentvals = entry.CurrentValues;
+            //var aa = 
+            curentvals.SetValues(entry);
+            Context.Entry(Context.Set<Client>().Find(entity.ID)).CurrentValues.SetValues(entity);
         }
 
         public ClientEditViewModel(Client c)
@@ -28,7 +36,7 @@ namespace Fiscal_Management_System.viewmodels.client
             WindowTitle = "Edytowanie kontrahenta";
         }
 
-        public ClientEditViewModel(FiscalDbContext context, Client c) : this(c)
+        public ClientEditViewModel(IDbContext context, Client c) : this(c)
         {
             Context = context;
         }

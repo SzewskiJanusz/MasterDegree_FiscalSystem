@@ -12,7 +12,7 @@ namespace Fiscal_Management_System.model
     using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
-    public class FiscalDbContext : DbContext
+    public class FiscalDbContext : DbContext, IDbContext
     {
         // Your context has been configured to use a 'Model' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -35,6 +35,11 @@ namespace Fiscal_Management_System.model
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        IDbSet<T> IDbContext.Set<T>()
+        {
+            return this.Set<T>();
         }
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.

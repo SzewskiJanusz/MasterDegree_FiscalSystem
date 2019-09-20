@@ -16,24 +16,19 @@ using Fiscal_Management_System.viewmodels.service;
 namespace Fiscal_Management_System.views.service
 {
     /// <summary>
-    /// Interaction logic for ServiceDetails.xaml
+    /// Interaction logic for SetAsDone.xaml
     /// </summary>
-    public partial class ServiceDetails : Window
+    public partial class SetAsDone : Window
     {
-        public ServiceDetails()
+        public SetAsDone()
         {
             InitializeComponent();
         }
 
-        public ServiceDetails(Service s)
+        public SetAsDone(Service s)
         {
             InitializeComponent();
-            this.DataContext = new ServiceDetailsViewModel(s);
-        }
-
-        public void closeWindow(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
+            this.DataContext = new SetServiceAsDoneViewModel(s);
         }
     }
 }

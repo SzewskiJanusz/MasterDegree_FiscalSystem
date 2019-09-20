@@ -19,24 +19,20 @@ namespace Fiscal_Management_System.viewmodels.device
 
         public override void OperateOnDatabase(Device entity)
         {
-            using (var ctx = new FiscalDbContext())
-            {
-                entity.DateOfLastService = entity.DateOfInitialization;
-                entity.TypeOfLastService = "Fiskalizacja";
-                entity.PlannedDateOfNextInspection = DateTime.Now.AddMonths(entity.InspectionPeriodicTimeInMonths);
-                DeviceModel dModel = ctx.DeviceModels.FirstOrDefault(x => x.ID == entity.Model.ID);
-                Client client = ctx.Clients.FirstOrDefault(x => x.ID == entity.Client.ID);
-                entity.Client = client;
-                dModel.Amount++;
-                entity.Model = dModel;
-                Place place = ctx.Places.FirstOrDefault(x => x.ID == entity.Place.ID);
+            entity.DateOfLastService = entity.DateOfInitialization;
+            entity.TypeOfLastService = "Fiskalizacja";
+            entity.PlannedDateOfNextInspection = DateTime.Now.AddMonths(entity.InspectionPeriodicTimeInMonths);
+            DeviceModel dModel = Context.Set<DeviceModel>().FirstOrDefault(x => x.ID == entity.Model.ID);
+            Client client = Context.Set<Client>().FirstOrDefault(x => x.ID == entity.Client.ID);
+            entity.Client = client;
+            dModel.Amount++;
+            entity.Model = dModel;
+            Place place = Context.Set<Place>().FirstOrDefault(x => x.ID == entity.Place.ID);
 
-                Device dev = new Device(entity);
-                if (place != null)
-                    dev.Place = place;
-                ctx.Devices.Add(dev);
-                ctx.SaveChanges();
-            }
+            Device dev = new Device(entity);
+            if (place != null)
+                dev.Place = place;
+            Context.Set<Device>().Add(dev);
         }
 
         private DeviceModel _deviceModel;
@@ -105,6 +101,13 @@ namespace Fiscal_Management_System.viewmodels.device
 
             ButtonText = "Dodaj";
             WindowTitle = "Dodawanie urządzenia";
+        }
+
+        public DeviceAddViewModel(IDbContext context, Client c, Place p) : this(c, p)
+        {
+            Context = context;
+            Client = c;
+            Place = p;
         }
     }
 }

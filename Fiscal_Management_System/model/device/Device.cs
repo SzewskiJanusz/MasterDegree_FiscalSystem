@@ -2,6 +2,7 @@
 using Fiscal_Management_System.model.devicemodel;
 using Fiscal_Management_System.model.place;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -133,7 +134,11 @@ namespace Fiscal_Management_System.model.device
             this.PlaceId = c.PlaceId == 0 ? c.Model.ID : c.ModelId;
         }
 
-        public Device() { }
+        public Device()
+        {
+           // Devices = new HashSet<Device>();
+
+        }
 
         #region INotifyPropertyChanged things
         public event PropertyChangedEventHandler PropertyChanged;

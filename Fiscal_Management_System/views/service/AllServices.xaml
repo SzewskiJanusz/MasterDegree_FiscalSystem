@@ -20,7 +20,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <!-- Service details-->
-            <Button Content="Szczegóły" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToServicesButtonCommand}" CommandParameter="{Binding Entity}">
+            <Button Content="Szczegóły" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToServiceDetailsButtonCommand}" CommandParameter="{Binding Entity}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="IsEnabled" Value="True"/>
