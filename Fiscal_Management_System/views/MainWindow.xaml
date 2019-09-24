@@ -24,7 +24,7 @@
                 <MenuItem Header="_Urzędy skarbowe" Command="{Binding GoToRevenuesCommand}"/>
                 <Separator />
                 <MenuItem Header="_Modele urządzeń" Command="{Binding GoToDeviceModelsCommand}"/>
-                <MenuItem Header="_Typy usług"/>
+                <MenuItem Header="_Typy usług" Command="{Binding GoToTypesOfServicesCommand}"/>
             </MenuItem>
             <!-- Dodaj -->
             <MenuItem Header="_Dodaj">

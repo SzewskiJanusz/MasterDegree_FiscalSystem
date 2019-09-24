@@ -89,6 +89,8 @@
     <Compile Include="viewmodels\MainWindowViewModelTest.cs" />
     <Compile Include="viewmodels\revenue\RevenueAddViewModelTest.cs" />
     <Compile Include="viewmodels\revenue\RevenueViewModelTest.cs" />
+    <Compile Include="viewmodels\typeofservice\TypeOfServiceAddViewModelTest.cs" />
+    <Compile Include="viewmodels\typeofservice\TypeOfServiceViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

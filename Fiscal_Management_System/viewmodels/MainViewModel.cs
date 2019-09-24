@@ -1,19 +1,14 @@
-﻿using Fiscal_Management_System.model.client;
-using Fiscal_Management_System.views;
-using Fiscal_Management_System.views.client;
+﻿using Fiscal_Management_System.views.client;
 using Fiscal_Management_System.views.device;
-using Fiscal_Management_System.views.place;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Fiscal_Management_System.views.devicemodel;
 using Fiscal_Management_System.views.revenue;
 using Fiscal_Management_System.views.service;
+using Fiscal_Management_System.views.typeofservice;
 
 namespace Fiscal_Management_System.viewmodels
 {
@@ -138,6 +133,20 @@ namespace Fiscal_Management_System.viewmodels
             }
         }
 
+        private ICommand _goToTypesOfServicesCommand;
+        public ICommand GoToTypesOfServicesCommand
+        {
+            get
+            {
+                _goToTypesOfServicesCommand = new RelayCommand(o =>
+                {
+                    SetUserControl(new AllTypesOfServices(SetUserControl));
+                }, o => true);
+
+                return _goToTypesOfServicesCommand;
+            }
+        }
+        
         public int SetNextUserControl(UserControl uc)
         {
             if (NextUserControls.Count > 0)

@@ -6,9 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Fiscal_Management_System.model;
-using Fiscal_Management_System.model.client;
-using Fiscal_Management_System.model.device;
-using Fiscal_Management_System.model.place;
 using Fiscal_Management_System.model.revenue;
 using Fiscal_Management_System.views.revenue;
 

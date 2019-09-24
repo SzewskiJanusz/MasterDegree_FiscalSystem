@@ -22,14 +22,6 @@ namespace Fiscal_Management_System.model.devicemodel
             set { _name = value; OnPropertyChanged("Name"); }
         }
 
-        private int _amountOfDevices;
-        [Column("model_ilosc_urzadzen")]
-        public int Amount
-        {
-            get { return _amountOfDevices; }
-            set { _amountOfDevices = value; OnPropertyChanged("Amount"); }
-        }
-
         // 0:n on Device relation
         public ICollection<Device> Devices { get; set; }
 

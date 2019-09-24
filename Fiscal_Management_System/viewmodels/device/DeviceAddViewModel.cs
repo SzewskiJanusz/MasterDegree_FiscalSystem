@@ -25,7 +25,6 @@ namespace Fiscal_Management_System.viewmodels.device
             DeviceModel dModel = Context.Set<DeviceModel>().FirstOrDefault(x => x.ID == entity.Model.ID);
             Client client = Context.Set<Client>().FirstOrDefault(x => x.ID == entity.Client.ID);
             entity.Client = client;
-            dModel.Amount++;
             entity.Model = dModel;
             Place place = Context.Set<Place>().FirstOrDefault(x => x.ID == entity.Place.ID);
 

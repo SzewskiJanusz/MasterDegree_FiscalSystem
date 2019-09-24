@@ -25,7 +25,7 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.device
         {
             Client c = new Client() { ID = 1 };
             Place p = new Place() { ID = 1 };
-            DeviceModel dm = new DeviceModel() {ID= 1, Amount = 12};
+            DeviceModel dm = new DeviceModel() {ID= 1, Name = "Test"};
             Device device = new Device()
             {
                 UniqueNumber = "TestNumber",
@@ -46,7 +46,7 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.device
                 Returns(new FakeDbSet<Client>() { new Client() { ID = 1 } });
 
             mockContext.Setup(m => m.Set<DeviceModel>()).
-                Returns(new FakeDbSet<DeviceModel>() { new DeviceModel() { ID= 1, Amount = 12 } });
+                Returns(new FakeDbSet<DeviceModel>() { new DeviceModel() { ID= 1, Name="Test" } });
 
             DeviceAddViewModel cavm = new DeviceAddViewModel(mockContext.Object, c, p);
             cavm.Operation(device);

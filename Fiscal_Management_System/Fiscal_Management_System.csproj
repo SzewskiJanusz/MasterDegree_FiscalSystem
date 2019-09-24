@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -107,6 +109,8 @@
     <Compile Include="viewmodels\service\ServiceDetailsViewModel.cs" />
     <Compile Include="viewmodels\service\PlannedServicesViewModel.cs" />
     <Compile Include="viewmodels\service\SetServiceAsDoneViewModel.cs" />
+    <Compile Include="viewmodels\typeofservice\TypeOfServiceAddViewModel.cs" />
+    <Compile Include="viewmodels\typeofservice\TypesOfServicesViewModel.cs" />
     <Compile Include="views\devicemodel\AddDeviceModel.xaml.cs">
       <DependentUpon>AddDeviceModel.xaml</DependentUpon>
     </Compile>
@@ -145,6 +149,12 @@
     </Compile>
     <Compile Include="views\service\SetAsDone.xaml.cs">
       <DependentUpon>SetAsDone.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\typeofservice\AddTypeOfService.xaml.cs">
+      <DependentUpon>AddTypeOfService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\typeofservice\AllTypesOfServices.xaml.cs">
+      <DependentUpon>AllTypesOfServices.xaml</DependentUpon>
     </Compile>
     <Page Include="views\devicemodel\AddDeviceModel.xaml">
       <SubType>Designer</SubType>
@@ -208,6 +218,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\service\SetAsDone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\typeofservice\AddTypeOfService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\typeofservice\AllTypesOfServices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
