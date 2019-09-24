@@ -85,12 +85,12 @@ namespace Fiscal_Management_System.viewmodels.client
             GetDataFromDB();
         }
 
-        public ClientViewModel(Func<UserControl, int> ucSetMethod, FiscalDbContext context) : base(ucSetMethod)
+        public ClientViewModel(Func<UserControl, int> ucSetMethod, IDbContext context) : base(ucSetMethod)
         {
             EntitySearcher = new EntitySearcher<Client>();
         }
 
-        public IEnumerable<Client> GetDataFromDB(DbContext context)
+        public IEnumerable<Client> GetDataFromDB(IDbContext context)
         {
             EntitySearcher.Collection = new ObservableCollection<Client>
             (

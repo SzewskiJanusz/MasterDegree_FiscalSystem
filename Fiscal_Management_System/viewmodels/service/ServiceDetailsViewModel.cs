@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using Fiscal_Management_System.model.service;
 using Fiscal_Management_System.views.service;
@@ -21,7 +22,10 @@ namespace Fiscal_Management_System.viewmodels.service
                 {
                     Service serv = new Service((Service)o);
                     SetAsDone setasdone_window = new SetAsDone(serv);
-                    setasdone_window.ShowDialog();
+                    if ((bool)setasdone_window.ShowDialog())
+                    {
+                        MessageBox.Show("Dodano urządzenie!");
+                    }
 
                 }, o => true);
 

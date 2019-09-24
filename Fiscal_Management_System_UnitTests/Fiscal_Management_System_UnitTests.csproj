@@ -82,9 +82,13 @@
     <Compile Include="model\validation_rules\TextLengthValidationRuleTest.cs" />
     <Compile Include="viewmodels\client\ClientViewModelTest.cs" />
     <Compile Include="viewmodels\client\ClientAddViewModelTest.cs" />
+    <Compile Include="viewmodels\devicemodel\DeviceModelAddViewModelTest.cs" />
+    <Compile Include="viewmodels\devicemodel\DeviceModelViewModelTest.cs" />
     <Compile Include="viewmodels\device\DeviceAddViewModelTest.cs" />
     <Compile Include="viewmodels\device\DeviceViewModelTest.cs" />
     <Compile Include="viewmodels\MainWindowViewModelTest.cs" />
+    <Compile Include="viewmodels\revenue\RevenueAddViewModelTest.cs" />
+    <Compile Include="viewmodels\revenue\RevenueViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

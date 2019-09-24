@@ -89,19 +89,36 @@
     <Compile Include="viewmodels\client\ClientAddViewModel.cs" />
     <Compile Include="viewmodels\client\ClientEditViewModel.cs" />
     <Compile Include="viewmodels\client\ClientViewModel.cs" />
+    <Compile Include="viewmodels\devicemodel\DeviceModelAddViewModel.cs" />
     <Compile Include="viewmodels\devicemodel\DeviceModelManager.cs" />
+    <Compile Include="viewmodels\devicemodel\DeviceModelViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceAddViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceEditViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceViewModel.cs" />
     <Compile Include="viewmodels\EntityViewModel.cs" />
     <Compile Include="viewmodels\MainViewModel.cs" />
     <Compile Include="viewmodels\place\PlaceViewModel.cs" />
+    <Compile Include="viewmodels\revenue\RevenueAddViewModel.cs" />
     <Compile Include="viewmodels\revenue\RevenueManager.cs" />
     <Compile Include="viewmodels\client\StateManager.cs" />
     <Compile Include="viewmodels\ComboBoxManager.cs" />
+    <Compile Include="viewmodels\revenue\RevenueViewModel.cs" />
+    <Compile Include="viewmodels\service\DoneServicesViewModel.cs" />
     <Compile Include="viewmodels\service\ServiceDetailsViewModel.cs" />
-    <Compile Include="viewmodels\service\ServicesViewModel.cs" />
+    <Compile Include="viewmodels\service\PlannedServicesViewModel.cs" />
     <Compile Include="viewmodels\service\SetServiceAsDoneViewModel.cs" />
+    <Compile Include="views\devicemodel\AddDeviceModel.xaml.cs">
+      <DependentUpon>AddDeviceModel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\devicemodel\AllDeviceModels.xaml.cs">
+      <DependentUpon>AllDeviceModels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\revenue\AddRevenue.xaml.cs">
+      <DependentUpon>AddRevenue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\revenue\AllRevenues.xaml.cs">
+      <DependentUpon>AllRevenues.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\client\AddOrEditClient.xaml.cs">
       <DependentUpon>AddOrEditClient.xaml</DependentUpon>
     </Compile>
@@ -117,8 +134,11 @@
     <Compile Include="views\place\ClientDevicePlaces.xaml.cs">
       <DependentUpon>ClientDevicePlaces.xaml</DependentUpon>
     </Compile>
-    <Compile Include="views\service\AllServices.xaml.cs">
-      <DependentUpon>AllServices.xaml</DependentUpon>
+    <Compile Include="views\service\PlannedServices.xaml.cs">
+      <DependentUpon>PlannedServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\service\DoneServices.xaml.cs">
+      <DependentUpon>DoneServices.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\service\ServiceDetails.xaml.cs">
       <DependentUpon>ServiceDetails.xaml</DependentUpon>
@@ -126,6 +146,22 @@
     <Compile Include="views\service\SetAsDone.xaml.cs">
       <DependentUpon>SetAsDone.xaml</DependentUpon>
     </Compile>
+    <Page Include="views\devicemodel\AddDeviceModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\devicemodel\AllDeviceModels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\revenue\AddRevenue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\revenue\AllRevenues.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -159,7 +195,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\service\AllServices.xaml">
+    <Page Include="views\service\PlannedServices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\service\DoneServices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

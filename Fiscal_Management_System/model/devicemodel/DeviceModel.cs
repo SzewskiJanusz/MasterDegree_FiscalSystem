@@ -33,6 +33,18 @@ namespace Fiscal_Management_System.model.devicemodel
         // 0:n on Device relation
         public ICollection<Device> Devices { get; set; }
 
+        public DeviceModel()
+        {
+            Devices = new HashSet<Device>();
+        }
+
+        public DeviceModel(DeviceModel dm)
+        {
+            ID = dm.ID;
+            Name = dm.Name;
+            Devices = dm.Devices;
+        }
+
         #region INotifyPropertyChanged things
         public event PropertyChangedEventHandler PropertyChanged;
 

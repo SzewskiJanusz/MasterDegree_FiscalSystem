@@ -11,6 +11,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Fiscal_Management_System.views.devicemodel;
+using Fiscal_Management_System.views.revenue;
 using Fiscal_Management_System.views.service;
 
 namespace Fiscal_Management_System.viewmodels
@@ -101,10 +103,38 @@ namespace Fiscal_Management_System.viewmodels
             {
                 _goToServicesButtonCommand = new RelayCommand(o =>
                 {
-                    SetUserControl(new AllServices(null));
+                    SetUserControl(new PlannedServices(SetUserControl));
                 }, o => true);
 
                 return _goToServicesButtonCommand;
+            }
+        }
+
+        private ICommand _goToRevenuesCommand;
+        public ICommand GoToRevenuesCommand
+        {
+            get
+            {
+                _goToRevenuesCommand = new RelayCommand(o =>
+                {
+                    SetUserControl(new AllRevenues(SetUserControl));
+                }, o => true);
+
+                return _goToRevenuesCommand;
+            }
+        }
+
+        private ICommand _goToDeviceModelsCommand;
+        public ICommand GoToDeviceModelsCommand
+        {
+            get
+            {
+                _goToDeviceModelsCommand = new RelayCommand(o =>
+                {
+                    SetUserControl(new AllDeviceModels(SetUserControl));
+                }, o => true);
+
+                return _goToDeviceModelsCommand;
             }
         }
 

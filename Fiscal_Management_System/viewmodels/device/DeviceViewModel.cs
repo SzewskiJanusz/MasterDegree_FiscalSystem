@@ -250,8 +250,6 @@ namespace Fiscal_Management_System.viewmodels.device
             {
                 devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model")
                     .Where(x => x.ClientId == c.ID).ToList();
-
-                EntitySearcher.Collection = new ObservableCollection<Device>(devices);
             }
             return new ObservableCollection<Device>(devices);
         }
@@ -263,8 +261,6 @@ namespace Fiscal_Management_System.viewmodels.device
             {
                 devices = ctx.Set<Device>().Include("Client").Include("Place").Include("Model")
                     .Where(x => x.ClientId == c.ID && x.PlaceId == p.ID).ToList();
-
-                EntitySearcher.Collection = new ObservableCollection<Device>(devices);
             }
             return new ObservableCollection<Device>(devices);
         }

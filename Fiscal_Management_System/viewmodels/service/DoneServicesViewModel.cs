@@ -9,13 +9,21 @@ using Fiscal_Management_System.views.service;
 
 namespace Fiscal_Management_System.viewmodels.service
 {
-    public class ServicesViewModel : EntityViewModel<Service>
+    public class DoneServicesViewModel : EntityViewModel<Service>
     {
-        public ServicesViewModel(Func<UserControl, int> ucSetMethod) : base(ucSetMethod)
+        public DoneServicesViewModel(Func<UserControl, int> ucSetMethod) : base(ucSetMethod)
         {
             GetDataFromDB();
         }
 
+        public DoneServicesViewModel(Func<UserControl, int> ucSetMethod, IDbContext context) : base(ucSetMethod, context)
+        {
+
+        }
+
+        /// <summary>
+        /// Get all done services from db context
+        /// </summary>
         public void GetDataFromDB()
         {
             using (var context = new FiscalDbContext())
@@ -26,6 +34,7 @@ namespace Fiscal_Management_System.viewmodels.service
                         Include("Device.Place").
                         Include("Device.Client").
                         Include("TypeOfService").
+                        Where(x => x.ExecutionTime.HasValue).
                         ToList());
             }
         }
@@ -47,6 +56,24 @@ namespace Fiscal_Management_System.viewmodels.service
                 }, o => true);
 
                 return _goToServiceDetailsButtonCommand;
+            }
+        }
+
+        /// <summary>
+        /// Go to done services
+        /// </summary>
+        private ICommand _goToPlannedServicesButtonCommand;
+        public ICommand GoToPlannedServicesButtonCommand
+        {
+            get
+            {
+                _goToPlannedServicesButtonCommand = new RelayCommand(o =>
+                {
+                    PlannedServices ps = new PlannedServices(UserControlSwitcher);
+                    UserControlSwitcher(ps);
+                }, o => true);
+
+                return _goToPlannedServicesButtonCommand;
             }
         }
     }

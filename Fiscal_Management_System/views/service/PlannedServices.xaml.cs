@@ -5,14 +5,14 @@ using Fiscal_Management_System.viewmodels.service;
 namespace Fiscal_Management_System.views.service
 {
     /// <summary>
-    /// Interaction logic for AllServices.xaml
+    /// Interaction logic for PlannedServices.xaml
     /// </summary>
-    public partial class AllServices : UserControl
+    public partial class PlannedServices : UserControl
     {
-        public AllServices(Func<UserControl, int> ucSetMethod)
+        public PlannedServices(Func<UserControl, int> ucSetMethod)
         {
             InitializeComponent();
-            this.DataContext = new ServicesViewModel(ucSetMethod);
+            this.DataContext = new PlannedServicesViewModel(ucSetMethod);
         }
     }
 }

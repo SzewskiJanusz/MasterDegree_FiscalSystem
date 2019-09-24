@@ -30,7 +30,7 @@
             <Label Content="Data wykonania" Grid.Row="0" VerticalAlignment="Center"></Label>
             <Label Content="Cena brutto" Grid.Row="1" VerticalAlignment="Center"></Label>
 
-
+ 
             <DatePicker SelectedDateFormat="Long" 
                         Grid.Column="1" 
                         Grid.Row="0" 
@@ -43,6 +43,6 @@
         </Grid>
 
         <!-- Confirm button -->
-        <Button Grid.Row="2" Margin="10,10,10,10" Content="OK"/>
+        <Button Grid.Row="2" Click="closeWindow" Margin="10,10,10,10" Content="OK" Command="{Binding ConfirmButtonCommand}" CommandParameter="{Binding Service}"/>
     </Grid>
 </Window>

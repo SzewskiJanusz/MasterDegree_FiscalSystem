@@ -21,9 +21,9 @@
                 <MenuItem Header="_Zaplanowane usługi" />
                 <MenuItem Header="_Wykonane usługi" />
                 <Separator />
-                <MenuItem Header="_Urzędy skarbowe"/>
+                <MenuItem Header="_Urzędy skarbowe" Command="{Binding GoToRevenuesCommand}"/>
                 <Separator />
-                <MenuItem Header="_Modele urządzeń"/>
+                <MenuItem Header="_Modele urządzeń" Command="{Binding GoToDeviceModelsCommand}"/>
                 <MenuItem Header="_Typy usług"/>
             </MenuItem>
             <!-- Dodaj -->

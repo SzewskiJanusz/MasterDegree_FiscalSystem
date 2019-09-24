@@ -16,8 +16,20 @@
         </Grid.RowDefinitions>
         <!-- Label -->
         <Label Content="Szczegóły usługi" FontSize="26"/>
+        <!-- Set as Done button -->
         <Button Name="btnSetAsDone" Grid.Row="1" Margin="5,8,254,8" Content="Oznacz jako wykonaną" 
-                Command="{Binding GoToSetAsDoneButtonCommand}" CommandParameter="{Binding Service}"/>
+                Command="{Binding GoToSetAsDoneButtonCommand}" CommandParameter="{Binding Service}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Service.ExecutionTime}" Value="null">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <!-- Inputs -->
         <GroupBox Header="Dane usługi" Grid.Row="2">
             <Grid>

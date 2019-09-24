@@ -5,8 +5,13 @@ using System.Data.Entity;
 using System.Linq;
 using Fiscal_Management_System.model;
 using Fiscal_Management_System.model.client;
+using Fiscal_Management_System.model.device;
+using Fiscal_Management_System.model.devicemodel;
+using Fiscal_Management_System.model.place;
 using Fiscal_Management_System.model.revenue;
 using Fiscal_Management_System.viewmodels.client;
+using Fiscal_Management_System.viewmodels.device;
+using Fiscal_Management_System.viewmodels.revenue;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Fiscal_Management_System_UnitTests.viewmodels.client
@@ -31,15 +36,21 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
                 RevenueId = 1,
                 Revenue = new Revenue()
                 {
+                    ID = 1,
                     Name = "TestRevenue",
                     City = "TestCity",
                     Street = "TestStreet"
                 }
             };
 
+            var mockContext = new Mock<IDbContext>();
             var mockSet = new Mock<DbSet<Client>>();
-            var mockContext = new Mock<FiscalDbContext>();
-            mockContext.Setup(m => m.Clients).Returns(mockSet.Object);
+
+            mockContext.Setup(m => m.Set<Client>()).Returns(mockSet.Object);
+
+            mockContext.Setup(m => m.Set<Revenue>()).
+                Returns(new FakeDbSet<Revenue>() { new Revenue() { ID = 1 } });
+
             ClientAddViewModel cavm = new ClientAddViewModel(mockContext.Object);
             cavm.Operation(client);
 
@@ -66,9 +77,14 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
                 Revenue = null
             };
 
+            var mockContext = new Mock<IDbContext>();
             var mockSet = new Mock<DbSet<Client>>();
-            var mockContext = new Mock<FiscalDbContext>();
-            mockContext.Setup(m => m.Clients).Returns(mockSet.Object);
+
+            mockContext.Setup(m => m.Set<Client>()).Returns(mockSet.Object);
+
+            mockContext.Setup(m => m.Set<Revenue>()).
+                Returns(new FakeDbSet<Revenue>() { new Revenue() { ID = 1 } });
+
             ClientAddViewModel cavm = new ClientAddViewModel(mockContext.Object);
             cavm.Operation(client);
 
@@ -100,16 +116,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
             };
 
             var mockSet = new Mock<DbSet<Client>>();
-           // var mockSetRev = new Mock<DbSet<Revenue>>();
-        /*    mockSetRev.Object.Add(new Revenue()
-            {
-                Name = "TestRevenue",
-                City = "TestCity",
-                Street = "TestStreet"
-            });*/
-            var mockContext = new Mock<FiscalDbContext>();
-            mockContext.Setup(m => m.Clients).Returns(mockSet.Object);
-          //  mockContext.Setup(m => m.Revenues).Returns(mockSetRev.Object);
+
+            var mockContext = new Mock<IDbContext>();
+            mockContext.Setup(m => m.Set<Client>()).Returns(mockSet.Object);
             ClientAddViewModel cavm = new ClientAddViewModel(mockContext.Object);
             cavm.Operation(client);
 

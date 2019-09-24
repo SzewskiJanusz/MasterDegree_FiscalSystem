@@ -57,6 +57,9 @@
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsEnabled" Value="False"/>
                             </MultiDataTrigger>
+                            <DataTrigger Binding="{Binding Path=ShowHideLiquidatedButtonText}" Value="Ukryj zlikwidowane">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>

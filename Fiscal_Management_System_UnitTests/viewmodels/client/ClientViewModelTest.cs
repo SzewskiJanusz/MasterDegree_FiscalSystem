@@ -11,6 +11,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fiscal_Management_System.model.device;
+using Fiscal_Management_System.viewmodels.device;
 
 namespace Fiscal_Management_System_UnitTests.viewmodels.client
 {
@@ -20,11 +22,7 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
         [TestMethod]
         public void GetAllClients_Test()
         {
-            var mockSet = new Mock<DbSet<Client>>();
-            var mockContext = new Mock<FiscalDbContext>();
-            mockContext.Setup(m => m.Clients).Returns(mockSet.Object);
-            ClientAddViewModel cavm = new ClientAddViewModel(mockContext.Object);
-            cavm.Operation(new Client()
+            Client client = new Client()
             {
                 Name = "TestClient",
                 Symbol = "TestSymbol",
@@ -42,11 +40,23 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.client
                     City = "TestCity",
                     Street = "TestStreet"
                 }
-            });
-            ClientViewModel cwm = new ClientViewModel(null, mockContext.Object);
-            IEnumerable<Client> clients = cwm.GetDataFromDB(mockContext.Object);
-            mockContext.Verify(m => m.Clients, Times.Once);
-            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+            };
+
+            //Arrange
+            var mock = new Mock<IDbContext>();
+            mock.Setup(x => x.Set<Client>())
+                .Returns(new FakeDbSet<Client>
+                {
+                    client
+                });
+            // Act
+            ClientViewModel dvm = new ClientViewModel(null, mock.Object);
+
+
+            var allClients = dvm.GetDataFromDB(mock.Object);
+
+            // Assert
+            Assert.AreEqual(1, allClients.Count());
         }
 
     }
