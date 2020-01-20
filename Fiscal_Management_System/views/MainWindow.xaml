@@ -21,10 +21,38 @@
                 <MenuItem Header="_Zaplanowane usługi" />
                 <MenuItem Header="_Wykonane usługi" />
                 <Separator />
-                <MenuItem Header="_Urzędy skarbowe" Command="{Binding GoToRevenuesCommand}"/>
+                <MenuItem Header="_Urzędy skarbowe" Command="{Binding GoToRevenuesCommand}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="IsEnabled" Value="True"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=LoggedUser.IsMain}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
                 <Separator />
                 <MenuItem Header="_Modele urządzeń" Command="{Binding GoToDeviceModelsCommand}"/>
-                <MenuItem Header="_Typy usług" Command="{Binding GoToTypesOfServicesCommand}"/>
+                <MenuItem Header="_Typy usług" Command="{Binding GoToTypesOfServicesCommand}">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="IsEnabled" Value="True"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=LoggedUser.IsMain}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
             </MenuItem>
             <!-- Dodaj -->
             <MenuItem Header="_Dodaj">
@@ -53,6 +81,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
             <!-- Side panel -->
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
@@ -63,16 +95,17 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="0.4*" />
                 </Grid.RowDefinitions>
                 <Button Content="Kontrahenci" Grid.Row="0" Command="{Binding GoToClientsButtonCommand}"/>
                 <Button Content="Wszystkie urządzenia" Grid.Row="1" Command="{Binding GoToDevicesButtonCommand}"/>
                 <Button Content="Usługi" Grid.Row="2" Command="{Binding GoToServicesButtonCommand}"/>
+                
             </Grid>
             <!-- Main panel -->
             <UserControl Content="{Binding UserControl}" Grid.Column="1"/>
 
-
+            <Label Background="LightGray" Grid.Row="2" Grid.ColumnSpan="2" Content="{Binding LoggedInformation}"/>
         </Grid>
     </DockPanel>
 </Window>
