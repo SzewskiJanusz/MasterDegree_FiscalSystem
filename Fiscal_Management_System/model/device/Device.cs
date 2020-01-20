@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using Fiscal_Management_System.model.service;
+using Fiscal_Management_System.model.repairgroup;
 
 namespace Fiscal_Management_System.model.device
 {
@@ -109,6 +111,10 @@ namespace Fiscal_Management_System.model.device
         [ForeignKey("PlaceId")]
         public Place Place { get; set; }
 
+        public ICollection<Service> Services { get; set; }
+
+        public ICollection<RepairGroup> RepairGroups { get; set; }
+
         /// <summary>
         /// Copy contructor
         /// </summary>
@@ -132,12 +138,14 @@ namespace Fiscal_Management_System.model.device
             this.ModelId = c.ModelId == 0 ? c.Model.ID : c.ModelId;
             this.Place = c.Place;
             this.PlaceId = c.PlaceId == 0 ? c.Model.ID : c.ModelId;
+            this.Services = c.Services;
+            this.RepairGroups = c.RepairGroups;
         }
 
         public Device()
         {
-           // Devices = new HashSet<Device>();
-
+           Services = new HashSet<Service>();
+           RepairGroups = new HashSet<RepairGroup>();
         }
 
         #region INotifyPropertyChanged things
