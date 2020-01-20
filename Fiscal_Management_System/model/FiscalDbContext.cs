@@ -1,3 +1,4 @@
+using Fiscal_Management_System.model.repairgroup;
 using Fiscal_Management_System.model.service;
 
 namespace Fiscal_Management_System.model
@@ -31,6 +32,8 @@ namespace Fiscal_Management_System.model
         public virtual DbSet<Place> Places {get; set;}
         public virtual DbSet<Service> Services {get; set;}
         public virtual DbSet<TypeOfService> TypeOfServices {get; set;}
+        public virtual DbSet<Serviceman> Servicemen {get; set;}
+        public virtual DbSet<RepairGroup> RepairGroups {get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
