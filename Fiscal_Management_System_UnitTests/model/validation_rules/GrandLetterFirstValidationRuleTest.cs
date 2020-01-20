@@ -18,9 +18,14 @@ namespace Fiscal_Management_System_UnitTests.model.validation_rules
         [TestMethod]
         public void FirstLetterIsGrand()
         {
+            // Arrange
             GrandLetterFirstValidationRule rule =
                 new GrandLetterFirstValidationRule();
+
+            // Act
             ValidationResult result = rule.Validate("Aleksander", null);
+
+            // Assert
             Assert.AreEqual(new ValidationResult(true, null), result);
         }
 

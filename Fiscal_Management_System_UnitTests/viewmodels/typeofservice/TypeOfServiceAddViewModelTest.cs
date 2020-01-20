@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using Fiscal_Management_System.model;
-using Fiscal_Management_System.model.revenue;
 using Fiscal_Management_System.model.service;
-using Fiscal_Management_System.viewmodels.revenue;
 using Fiscal_Management_System.viewmodels.typeofservice;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

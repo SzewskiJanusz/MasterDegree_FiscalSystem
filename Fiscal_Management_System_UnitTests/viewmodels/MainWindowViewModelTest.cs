@@ -16,7 +16,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels
         [TestMethod]
         public void Navigation_BackFromUserControlTest()
         {
-            MainViewModel mvm = new MainViewModel();
+            MainViewModel mvm = new MainViewModel(
+                new Fiscal_Management_System.model.Serviceman()
+                { Name = "TestName", Surname = "TestSurname" });
 
             UserControl UC_A = new UserControl() {  Tag = "A" };
             UserControl UC_B = new UserControl() { Tag = "B" };
@@ -31,7 +33,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels
         [TestMethod]
         public void Navigation_ForwardToUserControlTest()
         {
-            MainViewModel mvm = new MainViewModel();
+            MainViewModel mvm = new MainViewModel(
+                new Fiscal_Management_System.model.Serviceman()
+                { Name = "TestName", Surname = "TestSurname" });
 
             UserControl UC_A = new UserControl() { Tag = "A" };
             UserControl UC_B = new UserControl() { Tag = "B" };
@@ -57,7 +61,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels
         [TestMethod]
         public void Navigation_NoReactionWhenClickedBackTooManyTimesTest()
         {
-            MainViewModel mvm = new MainViewModel();
+            MainViewModel mvm = new MainViewModel(
+                new Fiscal_Management_System.model.Serviceman()
+                { Name = "TestName", Surname = "TestSurname" });
 
             UserControl UC_A = new UserControl() { Tag = "A" };
             UserControl UC_B = new UserControl() { Tag = "B" };
@@ -76,7 +82,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels
         [TestMethod]
         public void Navigation_NoReactionWhenClickedForwardTooManyTimesTest()
         {
-            MainViewModel mvm = new MainViewModel();
+            MainViewModel mvm = new MainViewModel(
+                new Fiscal_Management_System.model.Serviceman()
+                { Name = "TestName", Surname = "TestSurname" });
 
             UserControl UC_A = new UserControl() { Tag = "A" };
             UserControl UC_B = new UserControl() { Tag = "B" };
@@ -101,7 +109,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels
         [TestMethod]
         public void ButtonCommandForwardTest()
         {
-            MainViewModel mvm = new MainViewModel();
+            MainViewModel mvm = new MainViewModel(
+                new Fiscal_Management_System.model.Serviceman()
+                { Name = "TestName", Surname = "TestSurname" });
 
             UserControl UC_A = new UserControl() { Tag = "A" };
             UserControl UC_B = new UserControl() { Tag = "B" };
@@ -120,7 +130,9 @@ namespace Fiscal_Management_System_UnitTests.viewmodels
         [TestMethod]
         public void ButtonCommandBackTest()
         {
-            MainViewModel mvm = new MainViewModel();
+            MainViewModel mvm = new MainViewModel(
+                new Fiscal_Management_System.model.Serviceman()
+                { Name = "TestName", Surname = "TestSurname" });
 
             UserControl UC_A = new UserControl() { Tag = "A" };
             UserControl UC_B = new UserControl() { Tag = "B" };

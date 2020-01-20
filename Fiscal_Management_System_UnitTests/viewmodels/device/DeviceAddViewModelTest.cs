@@ -10,6 +10,7 @@ using Fiscal_Management_System.model.device;
 using Fiscal_Management_System.model.devicemodel;
 using Fiscal_Management_System.model.place;
 using Fiscal_Management_System.model.revenue;
+using Fiscal_Management_System.model.service;
 using Fiscal_Management_System.viewmodels.client;
 using Fiscal_Management_System.viewmodels.device;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -31,11 +32,13 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.device
                 UniqueNumber = "TestNumber",
                 Client = c,
                 Place = p,
-                Model = dm
+                Model = dm,
+                InspectionPeriodicTimeInMonths = 24
             };
 
             var mockContext = new Mock<IDbContext>();
             var mockSet = new Mock<DbSet<Device>>();
+            var mockSetServices = new Mock<DbSet<Service>>();
 
             mockContext.Setup(m => m.Set<Device>()).Returns(mockSet.Object);
 
@@ -48,10 +51,14 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.device
             mockContext.Setup(m => m.Set<DeviceModel>()).
                 Returns(new FakeDbSet<DeviceModel>() { new DeviceModel() { ID= 1, Name="Test" } });
 
+            mockContext.Setup(m => m.Set<TypeOfService>()).
+                Returns(new FakeDbSet<TypeOfService>() { new TypeOfService() { Id = 1, Name = "Przegląd kasy fiskalnej" } });
+
+            mockContext.Setup(m => m.Set<Service>()).Returns(mockSetServices.Object);
             DeviceAddViewModel cavm = new DeviceAddViewModel(mockContext.Object, c, p);
             cavm.Operation(device);
 
-            mockSet.Verify(m => m.Add(It.IsAny<Device>()), Times.Once());
+            mockSetServices.Verify(m => m.Add(It.IsAny<Service>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
     }

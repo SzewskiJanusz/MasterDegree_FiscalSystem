@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using Castle.Components.DictionaryAdapter.Xml;
 using Fiscal_Management_System.model;
@@ -202,6 +203,33 @@ namespace Fiscal_Management_System_UnitTests.viewmodels.device
 
             // Assert
             Assert.AreEqual(2, allDevices.Count());
+        }
+
+        [TestMethod]
+        public void SetDeviceAsDone_Test()
+        {
+            // Arrange
+            Device d = new Device()
+            {
+                UniqueNumber = "1111111111",
+                Client = new Client() {ID = 1},
+                ClientId = 1,
+                Place = new Place() {ID = 1, State = "Test1", City = "Test1", Street = "Test1"},
+                PlaceId = 1,
+                DateOfLiquidation = null
+            };
+
+            var mock = new Mock<IDbContext>();
+            var mockDbSet = new Mock<IDbSet<Device>>();
+
+            mock.Setup(x => x.Set<Device>()).Returns(new FakeDbSet<Device>(){ d });
+            DeviceViewModel dvm = new DeviceViewModel(mock.Object);
+
+            // Act
+            dvm.SetDateOfLiquidation(d);
+
+            // Assert
+            Assert.IsNotNull(mock.Object.Set<Device>().FirstOrDefault().DateOfLiquidation);
         }
     }
 }
