@@ -6,6 +6,7 @@ using Fiscal_Management_System.views.device;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -16,6 +17,8 @@ namespace Fiscal_Management_System.viewmodels.place
 {
     public class PlaceViewModel
     {
+
+        private IDbContext Context;
         /// <summary>
         /// Provides searching mechanisms
         /// </summary>
@@ -85,14 +88,17 @@ namespace Fiscal_Management_System.viewmodels.place
             GetDataFromDB(c);
         }
 
+        public PlaceViewModel(Client c, IDbContext context, Func<UserControl, int> userControlSwitcher)
+        {
+            Context = context;
+            UserControlSwitcher = userControlSwitcher;
+            Client = c;
+            EntitySearcher = new EntitySearcher<Place>();
+        }
+
         private void GetDataFromDB(Client c)
         {
-            using (var ctx = new FiscalDbContext())
-            {
-                c = ctx.Clients.Include("Devices").Include("Devices.Place").FirstOrDefault(x => x.ID == c.ID);
-                HashSet<Place> places = new HashSet<Place>(c.Devices.ToList().Select(x => x.Place).ToList());
-                EntitySearcher.Collection = new ObservableCollection<Place>(places);
-            }
+            EntitySearcher.Collection = GetClientPlacesFromDb(c);
 
             if (EntitySearcher.Collection.Count == 0)
             {
@@ -101,14 +107,20 @@ namespace Fiscal_Management_System.viewmodels.place
                 if ((bool)addDeviceWindow.ShowDialog())
                 {
                     MessageBox.Show("Dodano urządzenie!");
-                    using (var ctx = new FiscalDbContext())
-                    {
-                        Client clc = ctx.Clients.Include("Revenue").Include("Devices").Include("Devices.Place").Where(x => x.ID == c.ID).FirstOrDefault();
-                        HashSet<Place> places = new HashSet<Place>(clc.Devices.ToList().Select(x => x.Place).ToList());
-                        EntitySearcher.Collection = new ObservableCollection<Place>(places);
-                    }
+                    EntitySearcher.Collection = GetClientPlacesFromDb(c);
                 }
             }
+        }
+
+        public ObservableCollection<Place> GetClientPlacesFromDb(Client c)
+        {
+            HashSet<Place> places;
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
+            {
+                c = ctx.Set<Client>().Include("Devices").Include("Devices.Place").Include("Revenue").FirstOrDefault(x => x.ID == c.ID);
+                places = new HashSet<Place>(c.Devices.ToList().Select(x => x.Place).ToList());
+            }
+            return new ObservableCollection<Place>(places);
         }
     }
 }

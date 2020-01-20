@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,24 +12,35 @@ namespace Fiscal_Management_System.viewmodels.service
 {
     public class PlannedServicesViewModel : EntityViewModel<Service>
     {
-        public PlannedServicesViewModel(Func<UserControl, int> ucSetMethod) : base(ucSetMethod)
+        private Serviceman loggedUser;
+
+        public PlannedServicesViewModel(Func<UserControl, int> ucSetMethod, Serviceman serviceman) : base(ucSetMethod)
         {
-            GetDataFromDB();
+            loggedUser = serviceman;
+            EntitySearcher.Collection = GetDataFromDB();
         }
 
-        public void GetDataFromDB()
+        public PlannedServicesViewModel(Func<UserControl, int> ucSetMethod, IDbContext context) : base(ucSetMethod, context)
         {
-            using (var context = new FiscalDbContext())
+            Context = context;
+        }
+
+        public ObservableCollection<Service> GetDataFromDB()
+        {
+            ObservableCollection<Service> plannedServices;
+            using (var context = (Context == null ? new FiscalDbContext() : Context))
             {
-                EntitySearcher.Collection = new ObservableCollection<Service>(
-                    context.Services.
+                plannedServices = new ObservableCollection<Service>(
+                    context.Set<Service>().
                         Include("Device").
                         Include("Device.Place").
                         Include("Device.Client").
                         Include("TypeOfService").
-                        Where(x=>!x.ExecutionTime.HasValue).
+                        Where(x => !x.ExecutionTime.HasValue).
                         ToList());
             }
+
+            return plannedServices;
         }
 
         /// <summary>
@@ -61,7 +73,7 @@ namespace Fiscal_Management_System.viewmodels.service
             {
                 _goToDoneServicesButtonCommand = new RelayCommand(o =>
                 {
-                    DoneServices ds = new DoneServices(UserControlSwitcher);
+                    DoneServices ds = new DoneServices(UserControlSwitcher, loggedUser);
                     UserControlSwitcher(ds);
                 }, o => true);
 

@@ -9,9 +9,9 @@ namespace Fiscal_Management_System.viewmodels.client
     {
         public RevenueManager()
         {
-            using (var repo = new RevenueRepository(new FiscalDbContext()))
+            using (var ctx = new FiscalDbContext())
             {
-                AllData = repo.GetAll().ToList();
+                AllData = ctx.Set<Revenue>().ToList();
             }
         }
     }

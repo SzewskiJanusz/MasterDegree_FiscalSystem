@@ -24,7 +24,7 @@ namespace Fiscal_Management_System.viewmodels.service
                     SetAsDone setasdone_window = new SetAsDone(serv);
                     if ((bool)setasdone_window.ShowDialog())
                     {
-                        MessageBox.Show("Dodano urządzenie!");
+                        MessageBox.Show("Oznaczono usługę jako wykonaną!");
                     }
 
                 }, o => true);
