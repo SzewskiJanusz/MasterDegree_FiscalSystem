@@ -66,18 +66,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IsNullConverter.cs" />
-    <Compile Include="model\client\ClientRepository.cs" />
+    <Compile Include="LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="model\devicemodel\DeviceModel.cs" />
     <Compile Include="model\device\Device.cs" />
     <Compile Include="model\IDbContext.cs" />
     <Compile Include="model\place\Place.cs" />
+    <Compile Include="model\repairgroup\RepairGroup.cs" />
     <Compile Include="model\revenue\Revenue.cs" />
-    <Compile Include="model\revenue\RevenueRepository.cs" />
+    <Compile Include="model\serviceman\Serviceman.cs" />
     <Compile Include="model\service\Service.cs" />
     <Compile Include="model\service\TypeOfService.cs" />
     <Compile Include="model\validation_rules\OnlyNumbersAndLettersValidationRule.cs" />
-    <Compile Include="repositories\EntityRepository.cs" />
-    <Compile Include="repositories\IRepository.cs" />
     <Compile Include="model\client\Client.cs" />
     <Compile Include="EntitySearcher.cs" />
     <Compile Include="model\FiscalDbContext.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="viewmodels\devicemodel\DeviceModelAddViewModel.cs" />
     <Compile Include="viewmodels\devicemodel\DeviceModelManager.cs" />
     <Compile Include="viewmodels\devicemodel\DeviceModelViewModel.cs" />
+    <Compile Include="viewmodels\device\AssignServicemenViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceAddViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceEditViewModel.cs" />
     <Compile Include="viewmodels\device\DeviceViewModel.cs" />
@@ -116,6 +118,9 @@
     </Compile>
     <Compile Include="views\devicemodel\AllDeviceModels.xaml.cs">
       <DependentUpon>AllDeviceModels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\device\AssignServicemen.xaml.cs">
+      <DependentUpon>AssignServicemen.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\revenue\AddRevenue.xaml.cs">
       <DependentUpon>AddRevenue.xaml</DependentUpon>
@@ -156,11 +161,19 @@
     <Compile Include="views\typeofservice\AllTypesOfServices.xaml.cs">
       <DependentUpon>AllTypesOfServices.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\devicemodel\AddDeviceModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\devicemodel\AllDeviceModels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\device\AssignServicemen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
