@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Fiscal_Management_System.model;
 using Fiscal_Management_System.viewmodels.service;
 
 namespace Fiscal_Management_System.views.service
@@ -20,10 +21,10 @@ namespace Fiscal_Management_System.views.service
     /// </summary>
     public partial class DoneServices : UserControl
     {
-        public DoneServices(Func<UserControl, int> ucswitcher)
+        public DoneServices(Func<UserControl, int> ucswitcher, Serviceman user)
         {
             InitializeComponent();
-            this.DataContext = new DoneServicesViewModel(ucswitcher);
+            this.DataContext = new DoneServicesViewModel(ucswitcher, user);
         }
     }
 }

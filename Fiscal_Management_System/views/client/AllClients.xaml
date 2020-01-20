@@ -17,7 +17,7 @@
         
         <!-- Buttons and search textbox-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            
+
             <!-- Add and edit client button -->
             <Button Content="Dodaj" Margin="0,10,10,10" MinWidth="80" MinHeight="26" Command="{Binding GoToAddClientButtonCommand}"/>
             <Button Content="Edytuj" Margin="10,10,20,10" Name="btn_edit" MinWidth="80" MinHeight="26" Command="{Binding GoToEditClientButtonCommand}" CommandParameter="{Binding Entity}">
@@ -36,20 +36,19 @@
                 </Button.Style>
             </Button>
 
-            <!-- Separator --> 
+            <!-- Separator -->
             <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
-            
+
             <!-- Client's devices-->
             <Button Content="Urządzenia" Margin="20,10,20,10" MinWidth="120" MinHeight="26" Command="{Binding GoToClientPlacesButtonCommand}" CommandParameter="{Binding Entity}"/>
 
             <!-- Separator -->
             <Rectangle VerticalAlignment="Stretch" Width="1" Margin="5,2,0,2" Stroke="Black" />
-            
+
             <!-- Search label and textbox-->
             <Label Content="Szukaj" Margin="10,10,10,10" MinHeight="26"/>
             <TextBox Width="200" Margin="10,10,10,10" MaxHeight="20" Text="{Binding EntitySearcher.SearchText, UpdateSourceTrigger=PropertyChanged}"  />
         </StackPanel>
-        
         <!-- DataGrid -->
         <DataGrid AutoGenerateColumns="False" Name="DataGrid" SelectedItem="{Binding Entity}" ItemsSource="{Binding EntitySearcher.FilteredCollection}" Grid.Row="2" CanUserAddRows="false" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>

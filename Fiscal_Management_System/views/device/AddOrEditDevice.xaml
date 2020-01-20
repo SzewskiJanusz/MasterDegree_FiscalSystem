@@ -57,6 +57,7 @@
                 <Label Grid.Row="3" Content="Model urządzenia" FontSize="16"/>
                 <Label Grid.Row="4" Content="Data fiskalizacji" FontSize="16"/>
                 <Label Grid.Row="5" Content="Co ile miesięcy przegląd" FontSize="16"/>
+
                 <!-- Textbox inputs. Stack panels with TextBox + Label for validation output -->
                 <!-- Unique number -->
                 <TextBox x:Name="tbx_uniquenmb" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,0,10" >
@@ -109,7 +110,8 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-            </Grid>
+
+           </Grid>
         </GroupBox>
 
         <GroupBox Header="Miejsce instalacji" Grid.Row="2">
