@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -51,6 +52,8 @@ namespace Fiscal_Management_System
 
         public ObservableCollection<T> GetFilteredData(ObservableCollection<T> collection, string searchText)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            
             ObservableCollection<T> data = new ObservableCollection<T>();
             foreach (T c in collection)
             {
@@ -72,6 +75,9 @@ namespace Fiscal_Management_System
                     }
                 }
             }
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            Console.WriteLine(elapsedMs);
             return data;
         }
 
