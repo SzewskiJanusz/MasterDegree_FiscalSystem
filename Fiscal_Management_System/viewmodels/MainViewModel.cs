@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Fiscal_Management_System.model;
 using Fiscal_Management_System.views.devicemodel;
 using Fiscal_Management_System.views.revenue;
 using Fiscal_Management_System.views.service;
@@ -77,6 +78,16 @@ namespace Fiscal_Management_System.viewmodels
             }
         }
 
+
+        private Serviceman _loggedUser;
+        public Serviceman LoggedUser
+        {
+            get { return _loggedUser; }
+            set { _loggedUser = value; OnPropertyChanged("LoggedUser"); }
+        }
+
+        public string LoggedInformation { get; set; }
+
         private ICommand _goToDevicesButtonCommand;
         public ICommand GoToDevicesButtonCommand
         {
@@ -98,7 +109,7 @@ namespace Fiscal_Management_System.viewmodels
             {
                 _goToServicesButtonCommand = new RelayCommand(o =>
                 {
-                    SetUserControl(new PlannedServices(SetUserControl));
+                    SetUserControl(new PlannedServices(SetUserControl, LoggedUser));
                 }, o => true);
 
                 return _goToServicesButtonCommand;
@@ -176,8 +187,11 @@ namespace Fiscal_Management_System.viewmodels
             return 1;
         }
 
-        public MainViewModel()
+        public MainViewModel(Serviceman user)
         {
+            LoggedUser = user;
+            LoggedInformation = "Zalogowano jako: " + user.NameAndSurname;
+           
             // Init navigation lists
             PreviousUserControls = new List<UserControl>();
             NextUserControls = new List<UserControl>();
