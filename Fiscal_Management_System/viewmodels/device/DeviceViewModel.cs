@@ -73,6 +73,7 @@ namespace Fiscal_Management_System.viewmodels.device
             {
                 _goToLiquidateDeviceButtonCommand = new RelayCommand(o =>
                 {
+
                     MessageBoxResult result = 
                     MessageBox.Show("Czy na pewno chcesz zlikwidować to urządzenie (nr.unikatowy: "+Device.UniqueNumber+"? Operacja jest nieodwracalna",
                         "Ostrzeżenie", 
@@ -85,18 +86,24 @@ namespace Fiscal_Management_System.viewmodels.device
                             MessageBoxButton.YesNo);
                         if (result2 == MessageBoxResult.Yes)
                         {
-                            using (var ctx = Context == null ? new FiscalDbContext() : Context)
-                            {
-                                ctx.Set<Device>().FirstOrDefault(x => x.ID == Device.ID).DateOfLiquidation = DateTime.Today;
-                                ctx.SaveChanges();
-                                EntitySearcher.Collection = GetDataFromDb(Client, Place);
-                            }
+                            Device d = new Device((Device)o);
+                            SetDateOfLiquidation(d);
+                            EntitySearcher.Collection = GetDataFromDb(Client, Place);
                         }
                     }
 
                 }, o => true);
 
                 return _goToLiquidateDeviceButtonCommand;
+            }
+        }
+
+        public void SetDateOfLiquidation(Device d)
+        {
+            using (var ctx = Context == null ? new FiscalDbContext() : Context)
+            {
+                ctx.Set<Device>().FirstOrDefault(x => x.ID == d.ID).DateOfLiquidation = DateTime.Today;
+                ctx.SaveChanges();
             }
         }
 
@@ -176,7 +183,6 @@ namespace Fiscal_Management_System.viewmodels.device
         /// <summary>
         /// Constructor for testing
         /// </summary>
-        /// <param name="ForTestPurposes"></param>
         /// <param name="context"></param>
         public DeviceViewModel(IDbContext context) : base(null, context)
         {

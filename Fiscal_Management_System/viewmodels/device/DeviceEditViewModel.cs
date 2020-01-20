@@ -20,22 +20,7 @@ namespace Fiscal_Management_System.viewmodels.device
         public override void OperateOnDatabase(Device entity)
         {
             using (var ctx = new FiscalDbContext())
-            {/*
-                Place oldPlace = ctx.Places.FirstOrDefault(x => x.ID == entity.Place.ID);
-                
-                // Is old place different than new place
-                if (!oldPlace.Equals(entity.Place))
-                {
-                    Place newPlace = ctx.Places.Add(entity.Place);
-                    entity.Place = newPlace;
-                    oldPlace = ctx.Places.Include("Devices").FirstOrDefault(x => x.ID == entity.Place.ID);
-                    // If there are no devices assigned to the old place
-                    if (oldPlace.Devices.ToList().Count == 0)
-                    {
-                        ctx.Places.Remove(oldPlace);
-                    }
-                }*/
-
+            {
                 Place oldPlace = ctx.Places.Include("Devices").FirstOrDefault(x => x.ID == entity.Place.ID);
                 // Is old place different than new place
                 if (!oldPlace.Equals(entity.Place))
